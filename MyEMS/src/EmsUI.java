@@ -17,20 +17,9 @@ public class EmsUI implements ActionListener {
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
     }
-
-
-
-
-
-
-
-
-
 }
