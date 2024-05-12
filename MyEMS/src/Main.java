@@ -1,4 +1,7 @@
+import DB_Init.User;
 import UIs.logInUI;
+import UIs.myEmsUI;
+
 import javax.swing.*;
 import java.io.IOException;
 
@@ -16,6 +19,13 @@ public class Main {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+
+//                try {
+//                    new myEmsUI(new User(1, "generic@email.com", "password")).setVisible(true);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+
             }
         });
     }
