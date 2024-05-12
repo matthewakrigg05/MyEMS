@@ -8,5 +8,5 @@
  - [ ] Complete Employee class (TBC)
  - [X] Build GUI file
  - [X] Complete main class
- - [ ] Rethink current design - consider more how things will be calculated and stored
+ - [X] Rethink current design - consider more how things will be calculated and stored
  - [ ] Finish building the add employees page
