@@ -1,5 +1,8 @@
 # MyEMS
 
+The repository for this project is a new version of an old repository that I had made, there were a series of issues that arose
+when working in that repository so I thought the best thing for me to do was to delete it and reupload a safer version.
+
 This is my current project that I am working on in my free time. My intentions with this project are to teach myself and better understand OOP principles and to prepare me for another project that I plan on undertaking in
 the near future as part of research club at University.
 

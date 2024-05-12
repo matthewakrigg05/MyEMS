@@ -1,7 +1,5 @@
 package DB_Init;
 import java.sql.*;
-import java.util.Map;
-
 
 public class emsDB {
 
