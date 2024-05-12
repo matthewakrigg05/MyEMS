@@ -34,5 +34,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="mysql-connector-j-8.4.0" level="project" />
+    <orderEntry type="library" name="io.github.cdimascio.dotenv.java" level="project" />
   </component>
 </module>

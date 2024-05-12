@@ -1,13 +1,13 @@
 package DB_Init;
 import java.sql.*;
+import java.util.Map;
 
 
 public class emsDB {
 
     private static final String db_url = "jdbc:mysql://127.0.0.1:3306/myems";
     private static final String db_username = "root";
-    private static final String db_password = "NnVaZnNvAz29!";
-            //System.getenv("DB_PASS");
+    private static final String db_password = System.getenv("DB_PASS");
 
     public static User validateLogin(String email, String password){
         try{
