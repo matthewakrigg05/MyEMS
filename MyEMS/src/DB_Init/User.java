@@ -1,7 +1,5 @@
 package DB_Init;
 
-import java.util.Locale;
-
 public class User {
 
     private final int id;

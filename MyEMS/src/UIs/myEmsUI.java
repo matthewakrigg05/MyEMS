@@ -1,14 +1,13 @@
 package UIs;
+import DB_Init.User;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class myEmsUi extends mainFrame implements ActionListener {
+public class myEmsUI extends mainFrame implements ActionListener {
 
-
-
-    public myEmsUi() throws IOException {
+    public myEmsUI(User user) throws IOException {
         super("MyEMS");
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);

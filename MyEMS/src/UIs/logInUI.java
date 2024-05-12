@@ -1,5 +1,6 @@
 package UIs;
-
+import DB_Init.User;
+import DB_Init.emsDB;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +11,7 @@ import java.io.IOException;
 
 public class logInUI extends mainFrame implements ActionListener {
 
-    public logInUI() throws IOException{
+    public logInUI() throws IOException {
         super("My EMS | Log In");
     }
 
@@ -32,7 +33,7 @@ public class logInUI extends mainFrame implements ActionListener {
         emailFieldConsts.gridy = 1;
         emailFieldConsts.insets = new Insets(10, 0, 25, 0);
 
-        JTextField emailField= new JTextField();
+        JTextField emailField = new JTextField();
         emailField.setPreferredSize(new Dimension(getWidth() - 540, 40));
         emailField.setFont(new Font("Dialog", Font.PLAIN, 20));
 
@@ -56,9 +57,9 @@ public class logInUI extends mainFrame implements ActionListener {
         GridBagConstraints logInButtonConsts = new GridBagConstraints();
         logInButtonConsts.gridx = 0;
         logInButtonConsts.gridy = 4;
-        logInButtonConsts.insets = new Insets(90, 0, 15,0);
+        logInButtonConsts.insets = new Insets(90, 0, 15, 0);
 
-        JButton logInButton = getLogInButton();
+        final JButton logInButton = getLogInButton(emailField, passwordField);
 
         GridBagConstraints registerButtonConsts = new GridBagConstraints();
         registerButtonConsts.gridx = 0;
@@ -81,9 +82,9 @@ public class logInUI extends mainFrame implements ActionListener {
             }
         });
 
-        logInPanel.add(emailLabel , emailLabelConsts);
+        logInPanel.add(emailLabel, emailLabelConsts);
         logInPanel.add(emailField, emailFieldConsts);
-        logInPanel.add(passwordLabel, passwordLabelConsts );
+        logInPanel.add(passwordLabel, passwordLabelConsts);
         logInPanel.add(passwordField, passwordFieldConsts);
         logInPanel.add(logInButton, logInButtonConsts);
         logInPanel.add(registerLabel, registerButtonConsts);
@@ -91,22 +92,31 @@ public class logInUI extends mainFrame implements ActionListener {
         add(logInPanel);
     }
 
-    private JButton getLogInButton() {
+    private JButton getLogInButton(JTextField emailField, JPasswordField passwordField) {
         JButton logInButton = new JButton("Log In");
         logInButton.setPreferredSize(new Dimension(70, 30));
         logInButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                        logInUI.this.dispose();
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-                    myEmsUi myEMS = null;
+                String email = emailField.getText();
+                String password = String.valueOf(passwordField.getPassword());
+                User user = emsDB.validateLogin(email, password);
+
+                if (user != null) {
+                    logInUI.this.dispose();
+
+                    myEmsUI myEMS = null;
                     try {
-                        myEMS = new myEmsUi();
+                        myEMS = new myEmsUI(user);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
                     myEMS.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(logInUI.this, "Login Failed");
                 }
+            }
         });
         return logInButton;
     }
