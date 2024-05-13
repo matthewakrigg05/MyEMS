@@ -1,4 +1,6 @@
 package UIs;
+import DB_Init.emsDB;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -76,7 +78,7 @@ public class registerUI extends mainFrame implements ActionListener {
         registerButtonConsts.gridy = 6;
         registerButtonConsts.insets = new Insets(90, 0, 15, 0);
 
-        JButton registerButton = getRegisterButton();
+        JButton registerButton = getRegisterButton(emailField, passwordField, reTypeField);
 
         GridBagConstraints logInButtonConsts = new GridBagConstraints();
         logInButtonConsts.gridx = 0;
@@ -121,19 +123,42 @@ public class registerUI extends mainFrame implements ActionListener {
                 String password = String.valueOf(passwordField.getPassword());
                 String rePassword = String.valueOf(reTypeField.getPassword());
 
+                if(validateRegistrationInput(email, password, rePassword)){
+                    if(emsDB.register(email, password)) {
+                        registerUI.this.dispose();
 
+                        logInUI logInUI;
+                        try {
+                            logInUI = new logInUI();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        logInUI.setVisible(true);
 
-                registerUI.this.dispose();
+                        JOptionPane.showMessageDialog(logInUI, "Account registered successfully!");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(registerUI.this, "This email is already in use.");
+                    }
 
-                logInUI logInUI = null;
-                try {
-                    logInUI = new logInUI();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                }else{
+                    JOptionPane.showMessageDialog(registerUI.this, "Registration failed... \n " +
+                            "Check that your passwords match.");
                 }
-                logInUI.setVisible(true);
+
+
             }
         });
         return registerButton;
+    }
+
+    public boolean validateRegistrationInput(String email, String password, String rePassword){
+        if(email.isEmpty() || password.isEmpty() || rePassword.isEmpty()) return false;
+
+        if(!email.contains("@")) return false;
+
+        if(!password.equals(rePassword)) return false;
+
+        return true;
     }
 }

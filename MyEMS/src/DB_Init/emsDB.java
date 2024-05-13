@@ -7,8 +7,8 @@ public class emsDB {
     private static final String db_username = "root";
     private static final String db_password = System.getenv("DB_PASS");
 
-    public static User validateLogin(String email, String password){
-        try{
+    public static User validateLogin(String email, String password) {
+        try {
             Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
 
             PreparedStatement preparedStatement = connection.prepareStatement(
@@ -20,7 +20,7 @@ public class emsDB {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 int userId = resultSet.getInt("id");
                 return new User(userId, email, password);
             }
@@ -32,9 +32,9 @@ public class emsDB {
         return null;
     }
 
-    public static boolean register(String email, String password){
-        try{
-            if(!checkEmail(email)){
+    public static boolean register(String email, String password) {
+        try {
+            if (!checkEmail(email)) {
                 Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
 
                 PreparedStatement preparedStatement = connection.prepareStatement(
@@ -46,9 +46,10 @@ public class emsDB {
                 preparedStatement.executeUpdate();
                 return true;
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     public static boolean checkEmail(String email){
@@ -69,7 +70,6 @@ public class emsDB {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
+        return true;
     }
 }
