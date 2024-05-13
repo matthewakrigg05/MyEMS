@@ -32,4 +32,44 @@ public class emsDB {
         return null;
     }
 
+    public static boolean register(String email, String password){
+        try{
+            if(!checkEmail(email)){
+                Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
+
+                PreparedStatement preparedStatement = connection.prepareStatement(
+                        "INSERT INTO users(email, password) " + "VALUES(?, ?)"
+                );
+
+                preparedStatement.setString(1, email);
+                preparedStatement.setString(2, password);
+                preparedStatement.executeUpdate();
+                return true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean checkEmail(String email){
+        try {
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
+
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM users WHERE email = ?"
+            );
+
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next()){
+                return false;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }

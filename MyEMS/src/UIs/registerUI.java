@@ -110,12 +110,19 @@ public class registerUI extends mainFrame implements ActionListener {
         add(registerPanel);
     }
 
-    private JButton getRegisterButton() {
+    private JButton getRegisterButton(JTextField emailField, JPasswordField passwordField, JPasswordField reTypeField) {
         JButton registerButton = new JButton("Register");
         registerButton.setPreferredSize(new Dimension(90, 30));
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                String email = emailField.getText();
+                String password = String.valueOf(passwordField.getPassword());
+                String rePassword = String.valueOf(reTypeField.getPassword());
+
+
+
                 registerUI.this.dispose();
 
                 logInUI logInUI = null;
