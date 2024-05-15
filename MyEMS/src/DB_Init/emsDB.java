@@ -34,7 +34,7 @@ public class emsDB {
 
     public static boolean register(String email, String password) {
         try {
-            if (!checkEmail(email)) {
+            if (!checkEmailInDB(email)) {
                 Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
 
                 PreparedStatement preparedStatement = connection.prepareStatement(
@@ -52,7 +52,7 @@ public class emsDB {
         return false;
     }
 
-    public static boolean checkEmail(String email){
+    public static boolean checkEmailInDB(String email){
         try {
             Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
 

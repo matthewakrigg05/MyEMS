@@ -138,7 +138,7 @@ public class registerUI extends mainFrame implements ActionListener {
                         JOptionPane.showMessageDialog(logInUI, "Account registered successfully!");
                     }
                     else{
-                        JOptionPane.showMessageDialog(registerUI.this, "This email is already in use.");
+                        JOptionPane.showMessageDialog(registerUI.this, "This email is already in use...");
                     }
 
                 }else{
@@ -155,10 +155,15 @@ public class registerUI extends mainFrame implements ActionListener {
     public boolean validateRegistrationInput(String email, String password, String rePassword){
         if(email.isEmpty() || password.isEmpty() || rePassword.isEmpty()) return false;
 
-        if(!email.contains("@")) return false;
+        if(!validateEmailAddress(email)) return false;
 
-        if(!password.equals(rePassword)) return false;
+        return password.equals(rePassword);
+    }
 
-        return true;
+    public boolean validateEmailAddress(String email){
+        String emailPatterns = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(emailPatterns);
+        java.util.regex.Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
