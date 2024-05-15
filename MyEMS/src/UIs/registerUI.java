@@ -153,6 +153,8 @@ public class registerUI extends mainFrame implements ActionListener {
     public boolean validateRegistrationInput(String email, String password, String rePassword){
         if(email.isEmpty() || password.isEmpty() || rePassword.isEmpty()) return false;
 
+        if(!validPassword(password)) return false;
+
         if(!validateEmailAddress(email)) return false;
 
         return password.equals(rePassword);
@@ -163,5 +165,18 @@ public class registerUI extends mainFrame implements ActionListener {
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(emailPatterns);
         java.util.regex.Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public boolean validPassword(String password) {
+            String MIN_LENGTH = "6";
+            String MAX_LENGTH = "25";
+            String ONE_DIGIT = "(?=.*[0-9])";
+            String SPECIAL_CHAR = "(?=.*[@#$%^&+=])";
+            String NO_SPACE = "(?=\\S+$)";
+
+            String MIN_MAX_CHAR = ".{" + MIN_LENGTH + "," + MAX_LENGTH + "}";
+            String PATTERN = ONE_DIGIT + SPECIAL_CHAR + NO_SPACE + MIN_MAX_CHAR;
+
+            return password.matches(PATTERN);
     }
 }
