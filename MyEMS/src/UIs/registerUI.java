@@ -145,8 +145,6 @@ public class registerUI extends mainFrame implements ActionListener {
                     JOptionPane.showMessageDialog(registerUI.this, "Registration failed... \n " +
                             "Check that your passwords match.");
                 }
-
-
             }
         });
         return registerButton;

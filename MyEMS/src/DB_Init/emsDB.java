@@ -24,7 +24,6 @@ public class emsDB {
                 int userId = resultSet.getInt("id");
                 return new User(userId, email, password);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

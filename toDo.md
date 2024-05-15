@@ -10,4 +10,4 @@
  - [X] Complete main class
  - [X] Rethink current design - consider more how things will be calculated and stored
  - [ ] Finish building the add employees page
- - [ ] Add email validator
+ - [X] Add email validator

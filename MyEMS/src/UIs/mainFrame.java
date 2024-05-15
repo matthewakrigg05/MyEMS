@@ -32,7 +32,5 @@ public abstract class mainFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     }
-
     protected abstract void addUIcomponents();
-
 }
