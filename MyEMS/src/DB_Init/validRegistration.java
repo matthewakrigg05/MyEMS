@@ -2,7 +2,7 @@ package DB_Init;
 
 public class validRegistration {
 
-    public static boolean validateEmailAddress(String email){
+    public static boolean validEmailAddress(String email){
         String emailPatterns = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(emailPatterns);
         java.util.regex.Matcher matcher = pattern.matcher(email);
@@ -27,7 +27,7 @@ public class validRegistration {
 
         if(!validRegistration.validPassword(password)) return false;
 
-        if(!validRegistration.validateEmailAddress(email)) return false;
+        if(!validRegistration.validEmailAddress(email)) return false;
 
         return password.equals(rePassword);
     }

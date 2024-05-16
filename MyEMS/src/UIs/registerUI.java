@@ -10,7 +10,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-
 public class registerUI extends mainFrame implements ActionListener {
 
     public registerUI() throws IOException {
@@ -124,7 +123,10 @@ public class registerUI extends mainFrame implements ActionListener {
                 String password = String.valueOf(passwordField.getPassword());
                 String rePassword = String.valueOf(reTypeField.getPassword());
 
+                // First checks that the email is possible, sections are filled, and that the passwords match.
                 if(validRegistration.validateRegistrationInput(email, password, rePassword)){
+
+                    // THEN, checks if email exists already in DB, if not, adds to DB
                     if(emsDB.register(email, password)) {
                         registerUI.this.dispose();
 
@@ -139,12 +141,24 @@ public class registerUI extends mainFrame implements ActionListener {
                         JOptionPane.showMessageDialog(logInUI, "Account registered successfully!");
                     }
                     else{
+                        // Only outcome if email is in DB
                         JOptionPane.showMessageDialog(registerUI.this, "This email is already in use...");
                     }
+                }
 
-                }else{
-                    JOptionPane.showMessageDialog(registerUI.this, "Registration failed... \n " +
+                else{
+                    // If the email is invalid
+                    if(!validRegistration.validEmailAddress(email)){
+                        JOptionPane.showMessageDialog(registerUI.this, "Please use a valid email address.");
+                    }
+                    // If password is invalid
+                    else if (!validRegistration.validPassword(password)){
+                        JOptionPane.showMessageDialog(registerUI.this, "Please use a valid password");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(registerUI.this, "Registration failed... \n " +
                             "Check that your passwords match.");
+                    }
                 }
             }
         });
