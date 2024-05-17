@@ -148,11 +148,11 @@ public class registerUI extends mainFrame implements ActionListener {
 
                 else{
                     // If the email is invalid
-                    if(!validRegistration.validEmailAddress(email)){
+                    if(validRegistration.invalidEmailAddress(email)){
                         JOptionPane.showMessageDialog(registerUI.this, "Please use a valid email address.");
                     }
                     // If password is invalid
-                    else if (!validRegistration.validPassword(password)){
+                    else if (validRegistration.invalidPassword(password)){
                         JOptionPane.showMessageDialog(registerUI.this, "Please use a valid password");
                     }
                     // Last case where the passwords in the password fields don't match
