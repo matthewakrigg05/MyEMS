@@ -155,6 +155,7 @@ public class registerUI extends mainFrame implements ActionListener {
                     else if (!validRegistration.validPassword(password)){
                         JOptionPane.showMessageDialog(registerUI.this, "Please use a valid password");
                     }
+                    // Last case where the passwords in the password fields don't match
                     else {
                         JOptionPane.showMessageDialog(registerUI.this, "Registration failed... \n " +
                             "Check that your passwords match.");
