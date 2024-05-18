@@ -1,8 +1,12 @@
 package DB_Init;
 
-public class validRegistration {
+import UIs.registerUI;
+import javax.swing.*;
+import java.awt.*;
 
-    public static boolean invalidEmailAddress(String email){
+public class validRegistration extends Component {
+
+    public static boolean invalidEmailAddress(String email) {
         String emailPatterns = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(emailPatterns);
         java.util.regex.Matcher matcher = pattern.matcher(email);
@@ -22,13 +26,15 @@ public class validRegistration {
         return !password.matches(PATTERN);
     }
 
-    public static boolean validateRegistrationInput(String email, String password, String rePassword){
-        if(email.isEmpty() || password.isEmpty() || rePassword.isEmpty()) return false;
+    public static boolean validateRegistrationInput(String email, String password, String rePassword) {
+        if (email.isEmpty() || password.isEmpty() || rePassword.isEmpty()) return false;
 
-        if(invalidPassword(password)) return false;
+        if (invalidPassword(password)) return false;
 
-        if(invalidEmailAddress(email)) return false;
+        if (invalidEmailAddress(email)) return false;
 
         return password.equals(rePassword);
     }
+
+
 }

@@ -1,7 +1,7 @@
 package UIs;
+
 import DB_Init.emsDB;
 import DB_Init.validRegistration;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -124,10 +124,10 @@ public class registerUI extends mainFrame implements ActionListener {
                 String rePassword = String.valueOf(reTypeField.getPassword());
 
                 // First checks that the email is possible, sections are filled, and that the passwords match.
-                if(validRegistration.validateRegistrationInput(email, password, rePassword)){
+                if (validRegistration.validateRegistrationInput(email, password, rePassword)) {
 
                     // THEN, checks if email exists already in DB, if not, adds to DB
-                    if(emsDB.register(email, password)) {
+                    if (emsDB.register(email, password)) {
                         registerUI.this.dispose();
 
                         logInUI logInUI;
@@ -139,30 +139,28 @@ public class registerUI extends mainFrame implements ActionListener {
                         logInUI.setVisible(true);
 
                         JOptionPane.showMessageDialog(logInUI, "Account registered successfully!");
-                    }
-                    else{
+                    } else {
                         // Only outcome if email is in DB
                         JOptionPane.showMessageDialog(registerUI.this, "This email is already in use...");
                     }
-                }
-
-                else{
-                    // If the email is invalid
-                    if(validRegistration.invalidEmailAddress(email)){
-                        JOptionPane.showMessageDialog(registerUI.this, "Please use a valid email address.");
-                    }
-                    // If password is invalid
-                    else if (validRegistration.invalidPassword(password)){
-                        JOptionPane.showMessageDialog(registerUI.this, "Please use a valid password");
-                    }
-                    // Last case where the passwords in the password fields don't match
-                    else {
-                        JOptionPane.showMessageDialog(registerUI.this, "Registration failed... \n " +
-                            "Check that your passwords match.");
-                    }
-                }
+                } else registrationError(email, password);
             }
         });
         return registerButton;
     }
+
+    public void registrationError(String email, String password) {
+        // If the email is invalid
+        if (validRegistration.invalidEmailAddress(email)) {
+            JOptionPane.showMessageDialog(registerUI.this, "Please use a valid email address.");
+        }
+        // If password is invalid
+        else if (validRegistration.invalidPassword(password)) {
+            JOptionPane.showMessageDialog(registerUI.this, "Please use a valid password");
+        }
+        // Last case where the passwords in the password fields don't match
+        else {
+            JOptionPane.showMessageDialog(registerUI.this, "Registration failed... \n " +
+                    "Check that your passwords match.");
+        }
 }
