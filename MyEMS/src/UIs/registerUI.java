@@ -33,7 +33,7 @@ public class registerUI extends mainFrame implements ActionListener {
         GridBagConstraints emailFieldConsts = new GridBagConstraints();
         emailFieldConsts.gridx = 0;
         emailFieldConsts.gridy = 1;
-        emailFieldConsts.insets = new Insets(10, 0, 50, 0);
+        emailFieldConsts.insets = new Insets(10, 0, 30, 0);
 
         JTextField emailField = new JTextField();
         emailField.setPreferredSize(new Dimension(getWidth() - 540, 40));
@@ -50,15 +50,31 @@ public class registerUI extends mainFrame implements ActionListener {
         GridBagConstraints passwordFieldConsts = new GridBagConstraints();
         passwordFieldConsts.gridx = 0;
         passwordFieldConsts.gridy = 3;
-        passwordFieldConsts.insets = new Insets(10, 0, 25, 0);
+        passwordFieldConsts.insets = new Insets(10, 0, 5, 0);
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setPreferredSize(new Dimension(getWidth() - 540, 40));
         passwordField.setFont(new Font("Dialog", Font.PLAIN, 28));
 
+        GridBagConstraints passwordLengthConsts = new GridBagConstraints();
+        passwordLengthConsts.gridx = 0;
+        passwordLengthConsts.gridy = 4;
+        JLabel passwordLength = new JLabel("Password contains 6-25 characters");
+
+        GridBagConstraints passwordNumConsts = new GridBagConstraints();
+        passwordNumConsts.gridx = 0;
+        passwordNumConsts.gridy = 5;
+        JLabel passwordNum = new JLabel("Password contains at least one number.");
+
+        GridBagConstraints passwordSpConsts = new GridBagConstraints();
+        passwordSpConsts.gridx = 0;
+        passwordSpConsts.gridy = 6;
+        JLabel passwordSp = new JLabel("Password contians at least one special character");
+
         GridBagConstraints reTypeLabelConsts = new GridBagConstraints();
         reTypeLabelConsts.gridx = 0;
-        reTypeLabelConsts.gridy = 4;
+        reTypeLabelConsts.gridy = 7;
+        reTypeLabelConsts.insets = new Insets(20, 0, 0, 0);
 
         JLabel reTypeLabel = new JLabel("Re-Type Password: ");
         reTypeLabel.setSize(getWidth() - 50, 24);
@@ -66,7 +82,7 @@ public class registerUI extends mainFrame implements ActionListener {
 
         GridBagConstraints reTypePasswordConsts = new GridBagConstraints();
         reTypePasswordConsts.gridx = 0;
-        reTypePasswordConsts.gridy = 5;
+        reTypePasswordConsts.gridy = 8;
         reTypePasswordConsts.insets = new Insets(10, 0, 0, 0);
 
         JPasswordField reTypeField = new JPasswordField();
@@ -75,14 +91,14 @@ public class registerUI extends mainFrame implements ActionListener {
 
         GridBagConstraints registerButtonConsts = new GridBagConstraints();
         registerButtonConsts.gridx = 0;
-        registerButtonConsts.gridy = 6;
-        registerButtonConsts.insets = new Insets(90, 0, 15, 0);
+        registerButtonConsts.gridy = 9;
+        registerButtonConsts.insets = new Insets(50, 0, 15, 0);
 
         JButton registerButton = getRegisterButton(emailField, passwordField, reTypeField);
 
         GridBagConstraints logInButtonConsts = new GridBagConstraints();
         logInButtonConsts.gridx = 0;
-        logInButtonConsts.gridy = 7;
+        logInButtonConsts.gridy = 10;
         JLabel logInLabel = new JLabel("<html><a href=\"#\">Already have an account? Sign in Here.</a></html>");
         logInLabel.setFont(new Font("Dialog", Font.PLAIN, 16));
 
@@ -105,6 +121,9 @@ public class registerUI extends mainFrame implements ActionListener {
         registerPanel.add(emailField, emailFieldConsts);
         registerPanel.add(passwordLabel, passwordLabelConsts);
         registerPanel.add(passwordField, passwordFieldConsts);
+        registerPanel.add(passwordLength, passwordLengthConsts);
+        registerPanel.add(passwordNum, passwordNumConsts);
+        registerPanel.add(passwordSp, passwordSpConsts);
         registerPanel.add(reTypeLabel, reTypeLabelConsts);
         registerPanel.add(reTypeField, reTypePasswordConsts);
         registerPanel.add(registerButton, registerButtonConsts);
@@ -163,4 +182,5 @@ public class registerUI extends mainFrame implements ActionListener {
             JOptionPane.showMessageDialog(registerUI.this, "Registration failed... \n " +
                     "Check that your passwords match.");
         }
+    }
 }
