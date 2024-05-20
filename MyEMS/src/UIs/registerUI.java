@@ -183,4 +183,11 @@ public class registerUI extends mainFrame implements ActionListener {
                     "Check that your passwords match.");
         }
     }
+
+//    public static void validPassword(String password, JLabel label){
+//        if (password.matches(".\\d.")){
+//            label.setForeground(Color.green);
+//        }
+//        else label.setForeground(Color.red);
+//    }
 }
