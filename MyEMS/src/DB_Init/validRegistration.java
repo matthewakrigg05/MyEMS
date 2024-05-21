@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class validRegistration extends Component {
-
     public static boolean invalidEmailAddress(String email) {
         String emailPatterns = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(emailPatterns);
@@ -36,5 +35,15 @@ public class validRegistration extends Component {
         return password.equals(rePassword);
     }
 
-
+//    public static boolean passwordContainsNum(String password){
+//        return (password.matches(".\\d."));
+//    }
+//
+//    public static boolean passwordContainsSC(String password){
+//        return (password.matches("[^A-Za-z0-9]+"));
+//    }
+//
+//    public static boolean passwordIsLength(String password) {
+//        return (password.length() < 26 && password.length() > 5);
+//    }
 }
