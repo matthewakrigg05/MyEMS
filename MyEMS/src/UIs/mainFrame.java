@@ -14,6 +14,7 @@ public abstract class mainFrame extends JFrame implements ActionListener {
 
     //Methods for building and maintaining the frame
     public mainFrame(String title) throws IOException {init(title);}
+
     public mainFrame(User user, String title){
         this.user = user;
         init(title);
@@ -30,7 +31,6 @@ public abstract class mainFrame extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-    }
+    public void actionPerformed(ActionEvent e) {}
     protected abstract void addUIcomponents();
 }

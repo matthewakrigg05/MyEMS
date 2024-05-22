@@ -1,14 +1,16 @@
 package UIs;
-
 import DB_Init.emsDB;
 import DB_Init.validRegistration;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+
+import static java.awt.Color.black;
 
 public class registerUI extends mainFrame implements ActionListener {
 
@@ -59,8 +61,11 @@ public class registerUI extends mainFrame implements ActionListener {
         GridBagConstraints passwordLengthConsts = new GridBagConstraints();
         passwordLengthConsts.gridx = 0;
         passwordLengthConsts.gridy = 4;
-        JTextArea passwordRules = new JTextArea("Ensure password contains:\n - 6-25 characters \n - at least one digit" +
-                "\n - at least one special character");
+        JTextArea passwordRules = new JTextArea("Ensure password contains:\n - 6-25 characters \n - At least one digit" +
+                "\n - At least one special character");
+        passwordRules.setEditable(false);
+        passwordRules.setOpaque(false);
+        passwordRules.setFont(new Font("Dialog", Font.BOLD, 12));
 
         GridBagConstraints reTypeLabelConsts = new GridBagConstraints();
         reTypeLabelConsts.gridx = 0;
@@ -83,7 +88,7 @@ public class registerUI extends mainFrame implements ActionListener {
         GridBagConstraints registerButtonConsts = new GridBagConstraints();
         registerButtonConsts.gridx = 0;
         registerButtonConsts.gridy = 7;
-        registerButtonConsts.insets = new Insets(50, 0, 15, 0);
+        registerButtonConsts.insets = new Insets(30, 0, 15, 0);
 
         JButton registerButton = getRegisterButton(emailField, passwordField, reTypeField);
 
