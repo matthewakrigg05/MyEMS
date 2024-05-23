@@ -2,15 +2,11 @@ package UIs;
 import DB_Init.emsDB;
 import DB_Init.validRegistration;
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-
-import static java.awt.Color.black;
 
 public class registerUI extends mainFrame implements ActionListener {
 
@@ -128,36 +124,33 @@ public class registerUI extends mainFrame implements ActionListener {
     private JButton getRegisterButton(JTextField emailField, JPasswordField passwordField, JPasswordField reTypeField) {
         JButton registerButton = new JButton("Register");
         registerButton.setPreferredSize(new Dimension(90, 30));
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        registerButton.addActionListener(e -> {
 
-                String email = emailField.getText();
-                String password = String.valueOf(passwordField.getPassword());
-                String rePassword = String.valueOf(reTypeField.getPassword());
+            String email = emailField.getText();
+            String password = String.valueOf(passwordField.getPassword());
+            String rePassword = String.valueOf(reTypeField.getPassword());
 
-                // First checks that the email is possible, sections are filled, and that the passwords match.
-                if (validRegistration.validateRegistrationInput(email, password, rePassword)) {
+            // First checks that the email is possible, sections are filled, and that the passwords match.
+            if (validRegistration.validateRegistrationInput(email, password, rePassword)) {
 
-                    // THEN, checks if email exists already in DB, if not, adds to DB
-                    if (emsDB.register(email, password)) {
-                        registerUI.this.dispose();
+                // THEN, checks if email exists already in DB, if not, adds to DB
+                if (emsDB.register(email, password)) {
+                    registerUI.this.dispose();
 
-                        logInUI logInUI;
-                        try {
-                            logInUI = new logInUI();
-                        } catch (IOException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        logInUI.setVisible(true);
-
-                        JOptionPane.showMessageDialog(logInUI, "Account registered successfully!");
-                    } else {
-                        // Only outcome if email is in DB
-                        JOptionPane.showMessageDialog(registerUI.this, "This email is already in use...");
+                    logInUI logInUI;
+                    try {
+                        logInUI = new logInUI();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
                     }
-                } else registrationError(email, password);
-            }
+                    logInUI.setVisible(true);
+
+                    JOptionPane.showMessageDialog(logInUI, "Account registered successfully!");
+                } else {
+                    // Only outcome if email is in DB
+                    JOptionPane.showMessageDialog(registerUI.this, "This email is already in use...");
+                }
+            } else registrationError(email, password);
         });
         return registerButton;
     }

@@ -2,7 +2,6 @@ package UIs;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
 import DB_Init.User;
 
 public abstract class mainFrame extends JFrame implements ActionListener {
@@ -13,7 +12,7 @@ public abstract class mainFrame extends JFrame implements ActionListener {
     private final JFrame mainFrame = new JFrame("EMS");
 
     //Methods for building and maintaining the frame
-    public mainFrame(String title) throws IOException {init(title);}
+    public mainFrame(String title) {init(title);}
 
     public mainFrame(User user, String title){
         this.user = user;

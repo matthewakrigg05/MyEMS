@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class validRegistration extends Component {
     public static boolean invalidEmailAddress(String email) {
-        String emailPatterns = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        String emailPatterns = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(emailPatterns);
         java.util.regex.Matcher matcher = pattern.matcher(email);
         return !matcher.matches();

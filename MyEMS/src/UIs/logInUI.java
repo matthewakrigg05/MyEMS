@@ -3,7 +3,6 @@ import DB_Init.User;
 import DB_Init.emsDB;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -64,7 +63,22 @@ public class logInUI extends mainFrame implements ActionListener {
         GridBagConstraints registerButtonConsts = new GridBagConstraints();
         registerButtonConsts.gridx = 0;
         registerButtonConsts.gridy = 5;
-        JLabel registerLabel = new JLabel("<html><a href=\"#\">Don't have an account? Register Here</a></html>");
+
+        final JLabel registerLabel = getRegisterLabel();
+
+        logInPanel.add(emailLabel, emailLabelConsts);
+        logInPanel.add(emailField, emailFieldConsts);
+        logInPanel.add(passwordLabel, passwordLabelConsts);
+        logInPanel.add(passwordField, passwordFieldConsts);
+        logInPanel.add(logInButton, logInButtonConsts);
+        logInPanel.add(registerLabel, registerButtonConsts);
+
+        add(logInPanel);
+    }
+
+    private JLabel getRegisterLabel() {
+        JLabel registerLabel
+                = new JLabel("<html><a href=\"#\">Don't have an account? Register Here</a></html>");
         registerLabel.setFont(new Font("Dialog", Font.PLAIN, 16));
 
         registerLabel.addMouseListener(new MouseAdapter() {
@@ -81,41 +95,30 @@ public class logInUI extends mainFrame implements ActionListener {
                 }
             }
         });
-
-        logInPanel.add(emailLabel, emailLabelConsts);
-        logInPanel.add(emailField, emailFieldConsts);
-        logInPanel.add(passwordLabel, passwordLabelConsts);
-        logInPanel.add(passwordField, passwordFieldConsts);
-        logInPanel.add(logInButton, logInButtonConsts);
-        logInPanel.add(registerLabel, registerButtonConsts);
-
-        add(logInPanel);
+        return registerLabel;
     }
 
     private JButton getLogInButton(JTextField emailField, JPasswordField passwordField) {
         JButton logInButton = new JButton("Log In");
         logInButton.setPreferredSize(new Dimension(70, 30));
-        logInButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        logInButton.addActionListener(e -> {
 
-                String email = emailField.getText();
-                String password = String.valueOf(passwordField.getPassword());
-                User user = emsDB.validateLogin(email, password);
+            String email = emailField.getText();
+            String password = String.valueOf(passwordField.getPassword());
+            User user = emsDB.validateLogin(email, password);
 
-                if (user != null) {
-                    logInUI.this.dispose();
+            if (user != null) {
+                logInUI.this.dispose();
 
-                    myEmsUI myEMS = null;
-                    try {
-                        myEMS = new myEmsUI(user);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    myEMS.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(logInUI.this, "Login Failed");
+                myEmsUI myEMS;
+                try {
+                    myEMS = new myEmsUI(user);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
+                myEMS.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(logInUI.this, "Login Failed");
             }
         });
         return logInButton;

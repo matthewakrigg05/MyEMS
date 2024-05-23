@@ -128,13 +128,8 @@ public class myEmsUI extends mainFrame implements ActionListener {
             repaint();
         });
 
-        addEmployeeButton.addActionListener(e -> {
-            addEmployeeWindow.setVisible(true);
-        });
+        addEmployeeButton.addActionListener(e -> addEmployeeWindow.setVisible(true));
 
-        closeWindow.addActionListener(e -> {
-            addEmployeeWindow.setVisible(false);
-        });
+        closeWindow.addActionListener(e -> addEmployeeWindow.setVisible(false));
     }
-
 }

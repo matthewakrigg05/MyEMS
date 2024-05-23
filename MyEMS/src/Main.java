@@ -6,14 +6,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new Runnable(){
-            @Override
-            public void run(){
-                try {
-                    new logInUI().setVisible(true);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+        SwingUtilities.invokeLater(() -> {
+            try {
+                new logInUI().setVisible(true);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
     }
