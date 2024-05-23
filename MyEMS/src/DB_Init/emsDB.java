@@ -3,7 +3,7 @@ import java.sql.*;
 
 public class emsDB {
 
-    private static final String db_url = "jdbc:mysql://127.0.0.1:3306/myems";
+    private static final String db_url = System.getenv("DB_URL");
     private static final String db_username = "root";
     private static final String db_password = System.getenv("DB_PASS");
 

@@ -9,7 +9,6 @@ public class myEmsUI extends mainFrame implements ActionListener {
 
     public myEmsUI(User user) throws IOException {
         super("MyEMS");
-
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 

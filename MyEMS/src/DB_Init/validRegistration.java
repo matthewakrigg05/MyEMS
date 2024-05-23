@@ -1,7 +1,5 @@
 package DB_Init;
 
-import UIs.registerUI;
-import javax.swing.*;
 import java.awt.*;
 
 public class validRegistration extends Component {
@@ -18,32 +16,17 @@ public class validRegistration extends Component {
         String ONE_DIGIT = "(?=.*[0-9])";
         String SPECIAL_CHAR = "(?=.*[@#$%^&+=])";
         String NO_SPACE = "(?=\\S+$)";
-
         String MIN_MAX_CHAR = ".{" + MIN_LENGTH + "," + MAX_LENGTH + "}";
         String PATTERN = ONE_DIGIT + SPECIAL_CHAR + NO_SPACE + MIN_MAX_CHAR;
 
-        return !password.matches(PATTERN);
+        return password.matches(PATTERN);
     }
 
     public static boolean validateRegistrationInput(String email, String password, String rePassword) {
         if (email.isEmpty() || password.isEmpty() || rePassword.isEmpty()) return false;
-
         if (invalidPassword(password)) return false;
-
         if (invalidEmailAddress(email)) return false;
 
         return password.equals(rePassword);
     }
-
-//    public static boolean passwordContainsNum(String password){
-//        return (password.matches(".\\d."));
-//    }
-//
-//    public static boolean passwordContainsSC(String password){
-//        return (password.matches("[^A-Za-z0-9]+"));
-//    }
-//
-//    public static boolean passwordIsLength(String password) {
-//        return (password.length() < 26 && password.length() > 5);
-//    }
 }
