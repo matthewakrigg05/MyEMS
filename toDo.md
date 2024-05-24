@@ -12,3 +12,10 @@
  - [ ] Finish building the add employees page
  - [X] Add email validator
  - [ ] Draw up how i want the app to function fully
+ - [ ] Design dashboard
+ - [ ] add calendars
+ - [ ] add a rota
+ - [ ] allow ability to log hours of staff
+ - [ ] view staff information
+ - [ ] show list of staff - alphabetical
+ - [ ] settings - log out option
