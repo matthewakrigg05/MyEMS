@@ -18,7 +18,6 @@ public class validRegistration extends Component {
         String NO_SPACE = "(?=\\S+$)";
         String MIN_MAX_CHAR = ".{" + MIN_LENGTH + "," + MAX_LENGTH + "}";
         String PATTERN = ONE_DIGIT + SPECIAL_CHAR + NO_SPACE + MIN_MAX_CHAR;
-
         return password.matches(PATTERN);
     }
 

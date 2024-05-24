@@ -1,11 +1,13 @@
 package DB_Init;
 import java.sql.*;
+import java.util.Arrays;
 
 public class emsDB {
 
     private static final String db_url = System.getenv("DB_URL");
     private static final String db_username = "root";
     private static final String db_password = System.getenv("DB_PASS");
+    private static final String salt = System.getenv("SALT");
 
     public static User validateLogin(String email, String password) {
         try {
@@ -15,7 +17,7 @@ public class emsDB {
             );
 
             preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
+            preparedStatement.setString(2, passwordUtils.hashPassword(password));
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -39,7 +41,7 @@ public class emsDB {
                 );
 
                 preparedStatement.setString(1, email);
-                preparedStatement.setString(2, password);
+                preparedStatement.setString(2, passwordUtils.hashPassword(password));
                 preparedStatement.executeUpdate();
                 return true;
             }
