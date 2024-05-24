@@ -80,13 +80,4 @@ public class employee {
 
     public String getNInumber(){return this.NInumber;}
 
-
-
-
-
-
-
-
-
-
 }
