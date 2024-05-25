@@ -1,4 +1,5 @@
 import UIs.logInUI;
+import UIs.myEmsUI;
 import javax.swing.*;
 import java.io.IOException;
 
@@ -8,7 +9,7 @@ public class Main {
 
         SwingUtilities.invokeLater(() -> {
             try {
-                new logInUI().setVisible(true);
+                new myEmsUI();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

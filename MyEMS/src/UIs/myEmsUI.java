@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+//import UIs.employeesPanel;
+
 public class myEmsUI extends mainFrame implements ActionListener {
 
     public myEmsUI(User user) throws IOException {
@@ -12,24 +14,20 @@ public class myEmsUI extends mainFrame implements ActionListener {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
+    public myEmsUI() throws IOException{
+        super("My EMS");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }
+
     @Override
     protected void addUIcomponents() {
-        JButton closeWindow = new JButton("x");
 
         // Components associated with the home panel
         final JPanel homePanel = new JPanel();
         JButton button = new JButton();
         JLabel homeTitle = new JLabel("Main content");
 
-        // Components associated with the employee panel
-        final JPanel employeesPanel = new JPanel();
-        JLabel employeeTitle = new JLabel("Employees");
-
         // Components associated with the add employee option
-        JWindow addEmployeeWindow = new JWindow();
-        JPanel addEmployeePanel = new JPanel();
-        JLabel addEmployeeLabel = new JLabel("Add Employee");
-        JButton addEmployeeButton = new JButton("+");
 
         // Components for the rotas panel
         final JPanel rotasPanel = new JPanel();
@@ -64,19 +62,6 @@ public class myEmsUI extends mainFrame implements ActionListener {
         homePanel.add(button);
         homePanel.add(homeTitle);
 
-        employeesPanel.add(employeeTitle);
-        employeesPanel.add(addEmployeeLabel);
-        employeesPanel.add(addEmployeeButton);
-
-        addEmployeeWindow.setVisible(false);
-        addEmployeeWindow.setSize(200, 200);
-        addEmployeeWindow.setLocationRelativeTo(employeesPanel);
-        addEmployeeWindow.add(addEmployeePanel);
-
-        addEmployeePanel.setBackground(Color.GRAY);
-        addEmployeePanel.add(closeWindow);
-        addEmployeePanel.add(addEmployeeLabel);
-
         rotasPanel.add(rotasTitle);
 
         calendarPanel.add(calendarTitle);
@@ -99,7 +84,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         employeesButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(employeesPanel, BorderLayout.CENTER);
+            getContentPane().add(employeesPanel.getEmployeePanel(), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
@@ -127,9 +112,5 @@ public class myEmsUI extends mainFrame implements ActionListener {
             revalidate();
             repaint();
         });
-
-        addEmployeeButton.addActionListener(e -> addEmployeeWindow.setVisible(true));
-
-        closeWindow.addActionListener(e -> addEmployeeWindow.setVisible(false));
     }
 }
