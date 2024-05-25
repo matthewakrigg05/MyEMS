@@ -1,9 +1,10 @@
-package UIs;
+package UIs.Utilities;
 import javax.swing.*;
 import java.awt.*;
 
 public class employeesPanel {
-    public JPanel employeesPanel;
+
+    public employeesPanel(){}
 
     public static JPanel getEmployeePanel(){
         final JPanel employeesPanel = new JPanel();

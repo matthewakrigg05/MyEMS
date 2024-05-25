@@ -1,11 +1,13 @@
 package UIs;
 import DB_Init.User;
+import UIs.Utilities.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-//import UIs.employeesPanel;
+//import UIs.Utilities.employeesPanel;
 
 public class myEmsUI extends mainFrame implements ActionListener {
 
@@ -84,7 +86,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         employeesButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(employeesPanel.getEmployeePanel(), BorderLayout.CENTER);
+            getContentPane().add(UIs.Utilities.employeesPanel.getEmployeePanel(), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
