@@ -1,13 +1,11 @@
 package UIs;
 import DB_Init.User;
 import UIs.Utilities.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-//import UIs.Utilities.employeesPanel;
 
 public class myEmsUI extends mainFrame implements ActionListener {
 
@@ -23,13 +21,6 @@ public class myEmsUI extends mainFrame implements ActionListener {
 
     @Override
     protected void addUIcomponents() {
-
-        // Components associated with the home panel
-        final JPanel homePanel = new JPanel();
-        JButton button = new JButton();
-        JLabel homeTitle = new JLabel("Main content");
-
-        // Components associated with the add employee option
 
         // Components for the rotas panel
         final JPanel rotasPanel = new JPanel();
@@ -61,16 +52,13 @@ public class myEmsUI extends mainFrame implements ActionListener {
         sideBar.add(calendarButton);
         sideBar.add(settingsButton);
 
-        homePanel.add(button);
-        homePanel.add(homeTitle);
-
         rotasPanel.add(rotasTitle);
 
         calendarPanel.add(calendarTitle);
 
         settingsPanel.add(settingsTitle);
 
-        add(homePanel, BorderLayout.CENTER);
+        add(homePanel.getHomePanel(), BorderLayout.CENTER);
         add(sideBar, BorderLayout.WEST);
 
         // Action Listeners for the sidebar buttons, removes all panels then replaces them with the panels they
@@ -78,7 +66,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         homeButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(homePanel, BorderLayout.CENTER);
+            getContentPane().add(homePanel.getHomePanel(), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
@@ -86,7 +74,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         employeesButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(UIs.Utilities.employeesPanel.getEmployeePanel(), BorderLayout.CENTER);
+            getContentPane().add(employeesPanel.getEmployeePanel(), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
