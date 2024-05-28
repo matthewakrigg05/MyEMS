@@ -7,9 +7,14 @@ import java.security.spec.InvalidKeySpecException;
 import org.apache.commons.codec.binary.Hex;
 
 /*
-* Password hashing algorithm using PBKDF2 as found on medium article
-* @ https://medium.com/@kasunpdh/how-to-store-passwords-securely-with-pbkdf2-204487f14e84
+Password hashing algorithm using PBKDF2 as found on medium article
+@ https://medium.com/@kasunpdh/how-to-store-passwords-securely-with-pbkdf2-204487f14e84
 */
+
+/*
+This class is used to implement the previously mentioned hashing algorithm. The class uses a SALT from the dotenv file
+to make sure that it cannot be found on GH and used to decipher passwords.
+ */
 
 public class passwordUtils {
     public static String hashPassword(String password) {
