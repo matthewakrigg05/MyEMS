@@ -6,7 +6,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-
 public class myEmsUI extends mainFrame implements ActionListener {
 
     public myEmsUI(User user) throws IOException {
@@ -21,17 +20,6 @@ public class myEmsUI extends mainFrame implements ActionListener {
 
     @Override
     protected void addUIcomponents() {
-
-        // Components for the rotas panel
-        final JPanel rotasPanel = new JPanel();
-        JLabel rotasTitle = new JLabel("Rotas");
-
-        // Components for the calendar panel
-        final JPanel calendarPanel = new JPanel();
-        JLabel calendarTitle = new JLabel("Calendar");
-
-        final JPanel settingsPanel = new JPanel();
-        JLabel settingsTitle = new JLabel("Settings");
 
         // Components associated to the side-bar:
         final JToolBar sideBar = new JToolBar(JToolBar.VERTICAL);
@@ -51,15 +39,6 @@ public class myEmsUI extends mainFrame implements ActionListener {
         sideBar.add(rotasButton);
         sideBar.add(calendarButton);
         sideBar.add(settingsButton);
-
-        rotasPanel.add(rotasTitle);
-
-        calendarPanel.add(calendarTitle);
-
-        settingsPanel.add(settingsTitle);
-
-        add(homePanel.getHomePanel(), BorderLayout.CENTER);
-        add(sideBar, BorderLayout.WEST);
 
         // Action Listeners for the sidebar buttons, removes all panels then replaces them with the panels they
         // intend to see
@@ -82,7 +61,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         rotasButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(rotasPanel, BorderLayout.CENTER);
+            getContentPane().add(rotasPanel.getRotasPanel(), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
@@ -90,7 +69,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         calendarButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(calendarPanel, BorderLayout.CENTER);
+            getContentPane().add(calendarPanel.getCalendarPanel(), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
@@ -98,9 +77,12 @@ public class myEmsUI extends mainFrame implements ActionListener {
         settingsButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(settingsPanel, BorderLayout.CENTER);
+            getContentPane().add(settingsPanel.getSettingsPanel(), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
+
+        add(homePanel.getHomePanel(), BorderLayout.CENTER);
+        add(sideBar, BorderLayout.WEST);
     }
 }

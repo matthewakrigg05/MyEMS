@@ -1,5 +1,4 @@
 package UIs.Utilities;
-
 import javax.swing.*;
 
 public class homePanel {
