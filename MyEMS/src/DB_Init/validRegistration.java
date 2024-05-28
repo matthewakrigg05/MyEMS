@@ -1,8 +1,13 @@
 package DB_Init;
-
 import java.awt.*;
 
+/*
+The validRegistration class is a utility class of static methods that are used when checking the user input, ensuring
+that said input is valid and meets specific requirements.
+ */
+
 public class validRegistration extends Component {
+
     public static boolean invalidEmailAddress(String email) {
         String emailPatterns = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(emailPatterns);
@@ -10,6 +15,7 @@ public class validRegistration extends Component {
         return !matcher.matches();
     }
 
+    // Password requirements using regex patterns.
     public static boolean invalidPassword(String password) {
         String MIN_LENGTH = "6";
         String MAX_LENGTH = "25";

@@ -1,5 +1,7 @@
 package DB_Init;
 
+// Incomplete
+
 public class User {
 
     private final int id;
