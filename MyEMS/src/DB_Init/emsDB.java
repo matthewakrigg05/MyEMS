@@ -1,14 +1,20 @@
 package DB_Init;
 import java.sql.*;
-import java.util.Arrays;
+
+/*
+The goal of this class is to connect to the database and manage how user data is passed on to the database; this is as
+well as making sure that a user email does not already exist in the database so that it cannot be used again.
+ */
 
 public class emsDB {
 
+    // Database information.
+    // Db password is maintained in a dot env file to prevent the password to the db being published to GH
     private static final String db_url = System.getenv("DB_URL");
     private static final String db_username = "root";
     private static final String db_password = System.getenv("DB_PASS");
-    private static final String salt = System.getenv("SALT");
 
+    // Method used to check the login details given with the db and ensure that they match.
     public static User validateLogin(String email, String password) {
         try {
             Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
@@ -31,6 +37,7 @@ public class emsDB {
         return null;
     }
 
+    // Method used to add user information to the db, also hashes the user password.
     public static boolean register(String email, String password) {
         try {
             if (!checkEmailInDB(email)) {
@@ -45,9 +52,11 @@ public class emsDB {
                 preparedStatement.executeUpdate();
                 return true;
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 
