@@ -12,6 +12,9 @@ public class addEmployeeWindow extends JDialog {
         setResizable(false);
         setBackground(Color.gray);
 
+        Dimension textFields = new Dimension(300, 40);
+        Font textFieldFont = new Font(("Dialog"), Font.PLAIN, 20);
+
         GridBagLayout windowGrid = new GridBagLayout();
         windowGrid.columnWidths = new int[]{50, 500, 150, 500, 50};
         windowGrid.rowHeights = new int[]{30, 50, 100, 50, 100, 50, 100, 50, 100, 30};
@@ -27,17 +30,14 @@ public class addEmployeeWindow extends JDialog {
         gbc_addEmployeeButton.gridx = 2;
         gbc_addEmployeeButton.gridy = 9;
 
-        Dimension textFields = new Dimension(300, 40);
-
         JLabel firstNameLabel = new JLabel("First Name: ");
         GridBagConstraints gbc_firstNameLabel = new GridBagConstraints();
         gbc_firstNameLabel.gridx = 1;
         gbc_firstNameLabel.gridy = 1;
 
         JTextField firstName = new JTextField();
-        firstName.setEditable(true);
-        firstName.setEnabled(true);
         firstName.setPreferredSize(textFields);
+        firstName.setFont(textFieldFont);
         GridBagConstraints gbc_firstName = new GridBagConstraints();
         gbc_firstName.gridx = 1;
         gbc_firstName.gridy = 2;
@@ -48,8 +48,8 @@ public class addEmployeeWindow extends JDialog {
         gbc_lastNameLabel.gridy = 1;
 
         JTextField lastName = new JTextField();
-        lastName.setEditable(true);
         lastName.setPreferredSize(textFields);
+        lastName.setFont(textFieldFont);
         GridBagConstraints gbc_lastName = new GridBagConstraints();
         gbc_lastName.gridx = 3;
         gbc_lastName.gridy = 2;
@@ -60,8 +60,8 @@ public class addEmployeeWindow extends JDialog {
         gbc_emailLabel.gridy = 3;
 
         JTextField email = new JTextField();
-        email.setEditable(true);
         email.setPreferredSize(textFields);
+        email.setFont(textFieldFont);
         GridBagConstraints gbc_email = new GridBagConstraints();
         gbc_email.gridx = 1;
         gbc_email.gridy = 4;
@@ -72,8 +72,8 @@ public class addEmployeeWindow extends JDialog {
         gbc_phoneNumLabel.gridy = 3;
 
         JTextField phoneNum = new JTextField();
-        phoneNum.setEditable(true);
         phoneNum.setPreferredSize(textFields);
+        phoneNum.setFont(textFieldFont);
         GridBagConstraints gbc_phoneNum = new GridBagConstraints();
         gbc_phoneNum.gridx = 3;
         gbc_phoneNum.gridy = 4;
@@ -84,7 +84,7 @@ public class addEmployeeWindow extends JDialog {
         gbc_addressLabel.gridy = 5;
 
         JTextField address = new JTextField();
-        address.setEditable(true);
+        address.setFont(textFieldFont);
         address.setPreferredSize(textFields);
         GridBagConstraints gbc_address = new GridBagConstraints();
         gbc_address.gridx = 1;
@@ -96,7 +96,7 @@ public class addEmployeeWindow extends JDialog {
         gbc_NInumLabel.gridy = 5;
 
         JTextField NInum = new JTextField();
-        NInum.setEditable(true);
+        NInum.setFont(textFieldFont);
         NInum.setPreferredSize(textFields);
         GridBagConstraints gbc_NInum = new GridBagConstraints();
         gbc_NInum.gridx = 3;
@@ -108,7 +108,7 @@ public class addEmployeeWindow extends JDialog {
         gbc_wageLabel.gridy = 7;
 
         JTextField wage = new JTextField();
-        wage.setEditable(true);
+        wage.setFont(textFieldFont);
         wage.setPreferredSize(textFields);
         GridBagConstraints gbc_wage = new GridBagConstraints();
         gbc_wage.gridx = 1;
@@ -131,7 +131,4 @@ public class addEmployeeWindow extends JDialog {
         add(wage, gbc_wage);
         add(addEmployeeButton, gbc_addEmployeeButton);
     }
-
-
-
 }
