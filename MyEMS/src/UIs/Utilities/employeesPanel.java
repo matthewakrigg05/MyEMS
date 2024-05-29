@@ -4,8 +4,6 @@ import java.awt.*;
 
 public class employeesPanel {
 
-    public employeesPanel(){}
-
     public static JPanel getEmployeePanel(){
         final JPanel employeesPanel = new JPanel();
         JLabel employeeTitle = new JLabel("Employees");
@@ -22,6 +20,7 @@ public class employeesPanel {
         return employeesPanel;
     }
 
+    // This is the window that opens when the add employee button is pressed to input the employees' information
     public static JWindow addEmployeeWindow(JPanel employeesPanel){
         JWindow addEmployeeWindow = new JWindow();
         JPanel addEmployeePanel = new JPanel();
