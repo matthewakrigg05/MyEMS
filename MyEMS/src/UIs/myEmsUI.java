@@ -6,6 +6,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+// File for the main UI of the application, sidebar does not have its own utility file due to the need for it to be
+// able to directly interact with the frame.
+
 public class myEmsUI extends mainFrame implements ActionListener {
 
     public myEmsUI(User user) throws IOException {
@@ -20,7 +23,6 @@ public class myEmsUI extends mainFrame implements ActionListener {
 
     @Override
     protected void addUIcomponents() {
-
         // Components associated to the side-bar:
         final JToolBar sideBar = new JToolBar(JToolBar.VERTICAL);
         JLabel placeholder = new JLabel("MyEMS");

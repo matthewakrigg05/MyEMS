@@ -3,6 +3,7 @@ import UIs.myEmsUI;
 import javax.swing.*;
 import java.io.IOException;
 
+// Application entry point
 public class Main {
 
     public static void main(String[] args) {

@@ -8,6 +8,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
+// File responsible for displaying login UI
+
 public class logInUI extends mainFrame implements ActionListener {
 
     public logInUI() throws IOException {
