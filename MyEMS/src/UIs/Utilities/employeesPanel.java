@@ -24,19 +24,44 @@ public class employeesPanel {
     public static JWindow addEmployeeWindow(JPanel employeesPanel){
         JWindow addEmployeeWindow = new JWindow();
         JPanel addEmployeePanel = new JPanel();
-        JButton closeWindow = new JButton("x");
+
+        GridBagLayout windowGrid = new GridBagLayout();
+        windowGrid.columnWidths = new int[]{50, 500, 150, 500, 50};
+        windowGrid.rowHeights = new int[]{30, 150, 150, 150, 150, 30};
+        addEmployeePanel.setLayout(windowGrid);
+
         JLabel addEmployeeLabel = new JLabel("Add Employee");
+        GridBagConstraints gbc_addEmployeeLabel = new GridBagConstraints();
+        gbc_addEmployeeLabel.gridx = 2;
+        gbc_addEmployeeLabel.gridy = 0;
+
+        JButton closeWindow = new JButton("Cancel");
+        GridBagConstraints gbc_closeWindow = new GridBagConstraints();
+        gbc_closeWindow.gridx = 4;
+        gbc_closeWindow.gridy = 0;
+        gbc_closeWindow.fill = GridBagConstraints.HORIZONTAL;
+
+        JButton addEmployeeButton = new JButton("Add");
+        GridBagConstraints gbc_addEmployeeButton = new GridBagConstraints();
+        gbc_addEmployeeButton.gridx = 2;
+        gbc_addEmployeeButton.gridy = 5;
+
+
 
         addEmployeeWindow.setVisible(false);
-        addEmployeeWindow.setSize(200, 200);
+        addEmployeeWindow.setSize(1300, 700);
         addEmployeeWindow.setLocationRelativeTo(employeesPanel);
         addEmployeeWindow.add(addEmployeePanel);
-
         addEmployeePanel.setBackground(Color.GRAY);
-        addEmployeePanel.add(closeWindow);
-        addEmployeePanel.add(addEmployeeLabel);
 
-        closeWindow.addActionListener(e -> addEmployeeWindow.setVisible(false));
+        addEmployeePanel.add(addEmployeeLabel, gbc_addEmployeeLabel);
+        addEmployeePanel.add(closeWindow, gbc_closeWindow);
+
+
+
+        addEmployeePanel.add(addEmployeeButton, gbc_addEmployeeButton);
+
+        closeWindow.addActionListener(e -> addEmployeeWindow.dispose());
 
         return addEmployeeWindow;
     }
