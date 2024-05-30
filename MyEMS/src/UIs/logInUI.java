@@ -114,7 +114,7 @@ public class logInUI extends mainFrame implements ActionListener {
 
                 myEmsUI myEMS;
                 try {
-                    myEMS = new myEmsUI(user);
+                     myEMS = new myEmsUI(user);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

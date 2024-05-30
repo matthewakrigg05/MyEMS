@@ -1,10 +1,16 @@
 package UIs.Utilities;
+import DB_Init.User;
+import UIs.myEmsUI;
 import javax.swing.*;
 import java.awt.*;
 
 public class addEmployeeWindow extends JDialog {
 
-    public addEmployeeWindow(){
+    private User user;
+    private myEmsUI myEmsUI;
+
+    public addEmployeeWindow(User user, myEmsUI myEmsUI){
+
         setFocusable(true);
         setSize(1300, 750);
         setModal(true);
