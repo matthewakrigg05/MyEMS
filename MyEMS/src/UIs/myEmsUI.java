@@ -1,5 +1,5 @@
 package UIs;
-import DB_Init.User;
+import DB_Usage.User;
 import UIs.Utilities.*;
 import javax.swing.*;
 import java.awt.*;
@@ -55,7 +55,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         employeesButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(employeesPanel.getEmployeePanel(user), BorderLayout.CENTER);
+            getContentPane().add(employeesPanel.getEmployeePanel(user, this), BorderLayout.CENTER);
             revalidate();
             repaint();
         });

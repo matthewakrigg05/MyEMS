@@ -1,13 +1,17 @@
 package UIs.Utilities;
-import DB_Init.User;
+import DB_Usage.User;
 import UIs.myEmsUI;
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class addEmployeeWindow extends JDialog {
 
     private User user;
-    private myEmsUI myEmsUI;
+    private static myEmsUI myEmsUI;
 
     public addEmployeeWindow(User user, myEmsUI myEmsUI){
 
@@ -136,5 +140,27 @@ public class addEmployeeWindow extends JDialog {
         add(wageLabel, gbc_wageLabel);
         add(wage, gbc_wage);
         add(addEmployeeButton, gbc_addEmployeeButton);
+
+    }
+
+    public static boolean validateInput(JTextField fname, JTextField lname, JTextField email, JTextField phoneNum,
+                                        JTextField address, JTextField NInum, JTextField wage, myEmsUI myEmsUI){
+
+        // get text
+        String firstName = fname.getText();
+        String lastName = lname.getText();
+        String emailAdd = email.getText();
+        String phoneNumber = phoneNum.getText();
+        String homeAddress = address.getText();
+        String NiNum = NInum.getText();
+
+        // then check everything
+        if (firstName.isEmpty() || lastName.isEmpty() || wage.getText().isEmpty() || NiNum.isEmpty() ||
+                homeAddress.isEmpty() || wage.getText().isEmpty() || (emailAdd.isEmpty() && phoneNumber.isEmpty())){
+            JOptionPane.showMessageDialog(myEmsUI, "Please fill all necessary fields in appropriate formats.");
+            return false;
+        }
+
+        return true;
     }
 }

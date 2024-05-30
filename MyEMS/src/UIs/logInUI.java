@@ -1,6 +1,6 @@
 package UIs;
-import DB_Init.User;
-import DB_Init.emsDB;
+import DB_Usage.User;
+import DB_Usage.emsDB;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;

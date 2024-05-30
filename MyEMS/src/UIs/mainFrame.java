@@ -2,7 +2,7 @@ package UIs;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import DB_Init.User;
+import DB_Usage.User;
 
 public abstract class mainFrame extends JFrame implements ActionListener {
 

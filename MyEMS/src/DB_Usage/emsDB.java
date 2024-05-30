@@ -1,4 +1,4 @@
-package DB_Init;
+package DB_Usage;
 import java.sql.*;
 
 /*
