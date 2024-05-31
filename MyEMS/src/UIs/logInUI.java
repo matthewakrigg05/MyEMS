@@ -21,59 +21,59 @@ public class logInUI extends mainFrame implements ActionListener {
         JPanel logInPanel = new JPanel();
         logInPanel.setLayout(new GridBagLayout());
 
-        GridBagConstraints emailLabelConsts = new GridBagConstraints();
-        emailLabelConsts.gridx = 0;
-        emailLabelConsts.gridy = 0;
+        GridBagConstraints gbc_emailLabel = new GridBagConstraints();
+        gbc_emailLabel.gridx = 0;
+        gbc_emailLabel.gridy = 0;
 
         JLabel emailLabel = new JLabel("Email: ");
         emailLabel.setSize(super.getWidth() - 30, 24);
         emailLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
 
-        GridBagConstraints emailFieldConsts = new GridBagConstraints();
-        emailFieldConsts.gridx = 0;
-        emailFieldConsts.gridy = 1;
-        emailFieldConsts.insets = new Insets(10, 0, 25, 0);
+        GridBagConstraints gbc_emailField = new GridBagConstraints();
+        gbc_emailField.gridx = 0;
+        gbc_emailField.gridy = 1;
+        gbc_emailField.insets = new Insets(10, 0, 25, 0);
 
         JTextField emailField = new JTextField();
         emailField.setPreferredSize(new Dimension(getWidth() - 540, 40));
         emailField.setFont(new Font("Dialog", Font.PLAIN, 20));
 
-        GridBagConstraints passwordLabelConsts = new GridBagConstraints();
-        passwordLabelConsts.gridx = 0;
-        passwordLabelConsts.gridy = 2;
+        GridBagConstraints gbc_passwordLabel = new GridBagConstraints();
+        gbc_passwordLabel.gridx = 0;
+        gbc_passwordLabel.gridy = 2;
 
         JLabel passwordLabel = new JLabel("Password:");
         passwordLabel.setSize(getWidth() - 50, 24);
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
 
-        GridBagConstraints passwordFieldConsts = new GridBagConstraints();
-        passwordFieldConsts.gridx = 0;
-        passwordFieldConsts.gridy = 3;
-        passwordFieldConsts.insets = new Insets(10, 0, 0, 0);
+        GridBagConstraints gbc_passwordField = new GridBagConstraints();
+        gbc_passwordField.gridx = 0;
+        gbc_passwordField.gridy = 3;
+        gbc_passwordField.insets = new Insets(10, 0, 0, 0);
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setPreferredSize(new Dimension(getWidth() - 540, 40));
         passwordField.setFont(new Font("Dialog", Font.PLAIN, 28));
 
-        GridBagConstraints logInButtonConsts = new GridBagConstraints();
-        logInButtonConsts.gridx = 0;
-        logInButtonConsts.gridy = 4;
-        logInButtonConsts.insets = new Insets(90, 0, 15, 0);
+        GridBagConstraints gbc_logInButton = new GridBagConstraints();
+        gbc_logInButton.gridx = 0;
+        gbc_logInButton.gridy = 4;
+        gbc_logInButton.insets = new Insets(90, 0, 15, 0);
 
         final JButton logInButton = getLogInButton(emailField, passwordField);
 
-        GridBagConstraints registerButtonConsts = new GridBagConstraints();
-        registerButtonConsts.gridx = 0;
-        registerButtonConsts.gridy = 5;
+        GridBagConstraints gbc_registerButton = new GridBagConstraints();
+        gbc_registerButton.gridx = 0;
+        gbc_registerButton.gridy = 5;
 
         final JLabel registerLabel = getRegisterLabel();
 
-        logInPanel.add(emailLabel, emailLabelConsts);
-        logInPanel.add(emailField, emailFieldConsts);
-        logInPanel.add(passwordLabel, passwordLabelConsts);
-        logInPanel.add(passwordField, passwordFieldConsts);
-        logInPanel.add(logInButton, logInButtonConsts);
-        logInPanel.add(registerLabel, registerButtonConsts);
+        logInPanel.add(emailLabel, gbc_emailLabel);
+        logInPanel.add(emailField, gbc_emailField);
+        logInPanel.add(passwordLabel, gbc_passwordLabel);
+        logInPanel.add(passwordField, gbc_passwordField);
+        logInPanel.add(logInButton, gbc_logInButton);
+        logInPanel.add(registerLabel, gbc_registerButton);
 
         add(logInPanel);
     }

@@ -2,11 +2,7 @@ package UIs.Utilities;
 import DB_Usage.User;
 import UIs.myEmsUI;
 import javax.swing.*;
-import javax.swing.text.NumberFormatter;
 import java.awt.*;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Locale;
 
 public class addEmployeeWindow extends JDialog {
 
@@ -141,23 +137,31 @@ public class addEmployeeWindow extends JDialog {
         add(wage, gbc_wage);
         add(addEmployeeButton, gbc_addEmployeeButton);
 
+        addEmployeeButton.addActionListener(e -> {
+            validateInput(firstName, lastName, email, phoneNum, address, NInum, wage, myEmsUI);
+        });
+
     }
 
     public static boolean validateInput(JTextField fname, JTextField lname, JTextField email, JTextField phoneNum,
                                         JTextField address, JTextField NInum, JTextField wage, myEmsUI myEmsUI){
 
-        // get text
         String firstName = fname.getText();
         String lastName = lname.getText();
         String emailAdd = email.getText();
         String phoneNumber = phoneNum.getText();
         String homeAddress = address.getText();
         String NiNum = NInum.getText();
+        String wages = wage.getText();
 
-        // then check everything
         if (firstName.isEmpty() || lastName.isEmpty() || wage.getText().isEmpty() || NiNum.isEmpty() ||
-                homeAddress.isEmpty() || wage.getText().isEmpty() || (emailAdd.isEmpty() && phoneNumber.isEmpty())){
+                homeAddress.isEmpty() || wages.isEmpty() || (emailAdd.isEmpty() && phoneNumber.isEmpty())){
             JOptionPane.showMessageDialog(myEmsUI, "Please fill all necessary fields in appropriate formats.");
+            return false;
+        }
+
+        if (!wages.matches("[-+]?[0-9]*\\.?[0-9]+")){
+            JOptionPane.showMessageDialog(myEmsUI, "Please ensure that the wage is numerical.");
             return false;
         }
 
