@@ -8,7 +8,6 @@ well as making sure that a user email does not already exist in the database so 
 
 public class emsDB {
 
-    // Database information.
     // Db password is maintained in a dot env file to prevent the password to the db being published to GH
     private static final String db_url = System.getenv("DB_URL");
     private static final String db_username = "root";
@@ -79,5 +78,9 @@ public class emsDB {
             e.printStackTrace();
         }
         return true;
+    }
+
+    public static void addEmployee(){
+
     }
 }

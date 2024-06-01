@@ -1,5 +1,6 @@
 package UIs.Utilities;
 import DB_Usage.User;
+import DB_Usage.employeeAdded;
 import UIs.myEmsUI;
 import javax.swing.*;
 import java.awt.*;
@@ -139,6 +140,10 @@ public class addEmployeeWindow extends JDialog {
 
         addEmployeeButton.addActionListener(e -> {
             validateInput(firstName, lastName, email, phoneNum, address, NInum, wage, myEmsUI);
+
+
+
+
         });
 
     }
