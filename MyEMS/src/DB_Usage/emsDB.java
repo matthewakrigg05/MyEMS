@@ -81,6 +81,15 @@ public class emsDB {
     }
 
     public static void addEmployee(){
+        try{
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
 
+            PreparedStatement insertEmployee = connection.prepareStatement(
+                    "INSERT employees(user_id, id, fname, lname, email, phoneNum, address, NI, wage, hours, date "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 0, NOW())"
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

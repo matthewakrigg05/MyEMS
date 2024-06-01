@@ -141,9 +141,6 @@ public class addEmployeeWindow extends JDialog {
         addEmployeeButton.addActionListener(e -> {
             validateInput(firstName, lastName, email, phoneNum, address, NInum, wage, myEmsUI);
 
-
-
-
         });
 
     }
