@@ -79,7 +79,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         settingsButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(settingsPanel.getSettingsPanel(), BorderLayout.CENTER);
+            getContentPane().add(settingsPanel.getSettingsPanel(this), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
