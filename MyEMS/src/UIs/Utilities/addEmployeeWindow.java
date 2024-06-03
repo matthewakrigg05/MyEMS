@@ -5,6 +5,8 @@ import UIs.myEmsUI;
 import javax.swing.*;
 import java.awt.*;
 
+import static DB_Usage.emsDB.addEmployee;
+
 public class addEmployeeWindow extends JDialog {
 
     private User user;
@@ -139,7 +141,10 @@ public class addEmployeeWindow extends JDialog {
         add(addEmployeeButton, gbc_addEmployeeButton);
 
         addEmployeeButton.addActionListener(e -> {
-            validateInput(firstName, lastName, email, phoneNum, address, NInum, wage, myEmsUI);
+            if(validateInput(firstName, lastName, email, phoneNum, address, NInum, wage, myEmsUI)){
+                //addEmployee();
+            }
+
 
         });
 

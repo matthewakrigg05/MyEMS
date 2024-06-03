@@ -80,7 +80,9 @@ public class emsDB {
         return true;
     }
 
-    public static void addEmployee(){
+    public static void addEmployee(int user_id, int id, String fname, String lname,
+                                   String email, String phoneNum, String address, String NI,
+                                   float wage){
         try{
             Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
 
@@ -88,6 +90,18 @@ public class emsDB {
                     "INSERT employees(user_id, id, fname, lname, email, phoneNum, address, NI, wage, hours, date "
                     + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 0, NOW())"
             );
+
+            insertEmployee.setString(1, String.valueOf(user_id));
+            insertEmployee.setString(2, String.valueOf(id));
+            insertEmployee.setString(3, fname);
+            insertEmployee.setString(4, lname);
+            insertEmployee.setString(5, email);
+            insertEmployee.setString(6, phoneNum);
+            insertEmployee.setString(7, address);
+            insertEmployee.setString(8, NI);
+            insertEmployee.setString(9, String.valueOf(wage));
+            insertEmployee.executeUpdate();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
