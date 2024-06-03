@@ -10,7 +10,7 @@ public class Main {
 
         SwingUtilities.invokeLater(() -> {
             try {
-                new myEmsUI();
+                new logInUI();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

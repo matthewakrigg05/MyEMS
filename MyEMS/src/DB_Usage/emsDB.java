@@ -1,6 +1,8 @@
 package DB_Usage;
+import java.math.BigDecimal;
 import java.sql.*;
-
+import java.time.LocalDateTime;
+import java.util.Calendar;
 /*
 The goal of this class is to connect to the database and manage how user data is passed on to the database; this is as
 well as making sure that a user email does not already exist in the database so that it cannot be used again.
@@ -29,6 +31,7 @@ public class emsDB {
                 int userId = resultSet.getInt("id");
                 return new User(userId, email, password);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -80,26 +83,26 @@ public class emsDB {
         return true;
     }
 
-    public static void addEmployee(int user_id, int id, String fname, String lname,
+    public static void addEmployee(int user_id, String fname, String lname,
                                    String email, String phoneNum, String address, String NI,
                                    float wage){
         try{
             Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
 
             PreparedStatement insertEmployee = connection.prepareStatement(
-                    "INSERT employees(user_id, id, fname, lname, email, phoneNum, address, NI, wage, hours, date "
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 0, NOW())"
+                    "INSERT employees(fname, lname, email, phoneNum, address, NI, wage, hours, user_id, date) "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())"
             );
 
-            insertEmployee.setString(1, String.valueOf(user_id));
-            insertEmployee.setString(2, String.valueOf(id));
-            insertEmployee.setString(3, fname);
-            insertEmployee.setString(4, lname);
-            insertEmployee.setString(5, email);
-            insertEmployee.setString(6, phoneNum);
-            insertEmployee.setString(7, address);
-            insertEmployee.setString(8, NI);
-            insertEmployee.setString(9, String.valueOf(wage));
+            insertEmployee.setString(1, fname);
+            insertEmployee.setString(2, lname);
+            insertEmployee.setString(3, email);
+            insertEmployee.setString(4, phoneNum);
+            insertEmployee.setString(5, address);
+            insertEmployee.setString(6, NI);
+            insertEmployee.setBigDecimal(7, BigDecimal.valueOf(wage));
+            insertEmployee.setBigDecimal(8, BigDecimal.valueOf(0));
+            insertEmployee.setInt(9, user_id);
             insertEmployee.executeUpdate();
 
         } catch (SQLException e) {
