@@ -1,9 +1,9 @@
 package UIs.Utilities;
 import DB_Usage.User;
-import DB_Usage.employeeAdded;
 import UIs.myEmsUI;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 import static DB_Usage.emsDB.addEmployee;
 
@@ -142,10 +142,13 @@ public class addEmployeeWindow extends JDialog {
 
         addEmployeeButton.addActionListener(e -> {
             if(validateInput(firstName, lastName, email, phoneNum, address, NInum, wage, myEmsUI)){
-                //addEmployee();
+                addEmployee(user.getId(), firstName.getText(), lastName.getText(), email.getText(), phoneNum.getText(),
+                        address.getText(), NInum.getText(), Float.parseFloat(wage.getText()));
+
+                dispose();
+
+                JOptionPane.showMessageDialog(myEmsUI, "Employee added successfully!");
             }
-
-
         });
 
     }
