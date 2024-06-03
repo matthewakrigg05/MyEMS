@@ -1,43 +1,30 @@
 package UIs.Utilities;
+import DB_Usage.User;
+import UIs.myEmsUI;
+
 import javax.swing.*;
-import java.awt.*;
 
-public class employeesPanel {
+public class employeesPanel extends JDialog {
 
-    public static JPanel getEmployeePanel(){
+    public static JPanel getEmployeePanel(User user, myEmsUI myEmsUi){
         final JPanel employeesPanel = new JPanel();
         JLabel employeeTitle = new JLabel("Employees");
+
         JLabel addEmployeeLabel = new JLabel("Add Employee");
         JButton addEmployeeButton = new JButton("+");
+        JButton editEmployeesButton = new JButton("Edit");
 
         employeesPanel.add(employeeTitle);
         employeesPanel.add(addEmployeeLabel);
         employeesPanel.add(addEmployeeButton);
 
-        JWindow addEmployeeWindow = addEmployeeWindow(employeesPanel);
-        addEmployeeButton.addActionListener(e -> addEmployeeWindow.setVisible(true));
+        addEmployeeButton.addActionListener(e -> {
+            JDialog addEmployeeWindow = new addEmployeeWindow(user, myEmsUi);
+            addEmployeeWindow.setTitle("Add a new employee");
+            addEmployeeWindow.setLocationRelativeTo(employeesPanel);
+            addEmployeeWindow.setVisible(true);
+        });
 
         return employeesPanel;
-    }
-
-    // This is the window that opens when the add employee button is pressed to input the employees' information
-    public static JWindow addEmployeeWindow(JPanel employeesPanel){
-        JWindow addEmployeeWindow = new JWindow();
-        JPanel addEmployeePanel = new JPanel();
-        JButton closeWindow = new JButton("x");
-        JLabel addEmployeeLabel = new JLabel("Add Employee");
-
-        addEmployeeWindow.setVisible(false);
-        addEmployeeWindow.setSize(200, 200);
-        addEmployeeWindow.setLocationRelativeTo(employeesPanel);
-        addEmployeeWindow.add(addEmployeePanel);
-
-        addEmployeePanel.setBackground(Color.GRAY);
-        addEmployeePanel.add(closeWindow);
-        addEmployeePanel.add(addEmployeeLabel);
-
-        closeWindow.addActionListener(e -> addEmployeeWindow.setVisible(false));
-
-        return addEmployeeWindow;
     }
 }

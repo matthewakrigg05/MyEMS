@@ -1,4 +1,4 @@
-package DB_Init;
+package DB_Usage;
 import java.sql.*;
 
 /*
@@ -8,7 +8,6 @@ well as making sure that a user email does not already exist in the database so 
 
 public class emsDB {
 
-    // Database information.
     // Db password is maintained in a dot env file to prevent the password to the db being published to GH
     private static final String db_url = System.getenv("DB_URL");
     private static final String db_username = "root";
@@ -79,5 +78,32 @@ public class emsDB {
             e.printStackTrace();
         }
         return true;
+    }
+
+    public static void addEmployee(int user_id, int id, String fname, String lname,
+                                   String email, String phoneNum, String address, String NI,
+                                   float wage){
+        try{
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
+
+            PreparedStatement insertEmployee = connection.prepareStatement(
+                    "INSERT employees(user_id, id, fname, lname, email, phoneNum, address, NI, wage, hours, date "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 0, NOW())"
+            );
+
+            insertEmployee.setString(1, String.valueOf(user_id));
+            insertEmployee.setString(2, String.valueOf(id));
+            insertEmployee.setString(3, fname);
+            insertEmployee.setString(4, lname);
+            insertEmployee.setString(5, email);
+            insertEmployee.setString(6, phoneNum);
+            insertEmployee.setString(7, address);
+            insertEmployee.setString(8, NI);
+            insertEmployee.setString(9, String.valueOf(wage));
+            insertEmployee.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -1,13 +1,13 @@
 public class employee {
 
-    private String fname = "";
-    private String lname = "";
-    private String email = "None";
-    private String phoneNum = "None";
-    private String address = "";
-    private String NInumber = "";
-    private float wage = 0;
-    private float hoursWorked = 0;
+    private String fname = ""; // req
+    private String lname = ""; // req
+    private String email = "None"; // not req
+    private String phoneNum = "None"; // not req
+    private String address = ""; // not req
+    private String NInumber = ""; // req
+    private float wage = 0; // req
+    private float hoursWorked = 0; // not req
 
     public employee(String fname, String lname, String address, float wage, String NInumber) {
         this.fname = fname;

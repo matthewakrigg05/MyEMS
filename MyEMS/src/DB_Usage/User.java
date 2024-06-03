@@ -1,4 +1,4 @@
-package DB_Init;
+package DB_Usage;
 
 // Incomplete
 
@@ -24,6 +24,5 @@ public class User {
     public String getPassword() {
         return password;
     }
-
 
 }

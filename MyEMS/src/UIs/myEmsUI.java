@@ -1,5 +1,5 @@
 package UIs;
-import DB_Init.User;
+import DB_Usage.User;
 import UIs.Utilities.*;
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.io.IOException;
 public class myEmsUI extends mainFrame implements ActionListener {
 
     public myEmsUI(User user) throws IOException {
-        super("MyEMS");
+        super(user, "MyEMS");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
@@ -55,7 +55,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
         employeesButton.addActionListener(e -> {
             getContentPane().removeAll();
             getContentPane().add(sideBar, BorderLayout.WEST);
-            getContentPane().add(employeesPanel.getEmployeePanel(), BorderLayout.CENTER);
+            getContentPane().add(employeesPanel.getEmployeePanel(user, this), BorderLayout.CENTER);
             revalidate();
             repaint();
         });
