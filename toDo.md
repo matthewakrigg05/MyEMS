@@ -1,7 +1,7 @@
  # To Do List
  
- - [X] Build a file that can test the functions of the employee class 
- - [X] Continue to add functions to the employee class 
+ - [X] Build a file that can test the functions of the DB_Usage.Employee class 
+ - [X] Continue to add functions to the DB_Usage.Employee class 
  - [X] Work on the front screen for the app
  - [X] Add log in page
  - [X] Change the fonts and sized of a text on login and registration

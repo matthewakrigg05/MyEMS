@@ -20,7 +20,7 @@ public class employeesPanel extends JDialog {
 
         addEmployeeButton.addActionListener(e -> {
             JDialog addEmployeeWindow = new addEmployeeWindow(user, myEmsUi);
-            addEmployeeWindow.setTitle("Add a new employee");
+            addEmployeeWindow.setTitle("Add a new DB_Usage.employee");
             addEmployeeWindow.setLocationRelativeTo(employeesPanel);
             addEmployeeWindow.setVisible(true);
         });

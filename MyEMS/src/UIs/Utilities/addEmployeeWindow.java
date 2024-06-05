@@ -1,11 +1,9 @@
 package UIs.Utilities;
 import DB_Usage.User;
+import static DB_Usage.employeesDB.addEmployee;
 import UIs.myEmsUI;
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLException;
-
-import static DB_Usage.emsDB.addEmployee;
 
 public class addEmployeeWindow extends JDialog {
 
