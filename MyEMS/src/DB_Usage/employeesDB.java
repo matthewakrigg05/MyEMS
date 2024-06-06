@@ -1,10 +1,8 @@
 package DB_Usage;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class employeesDB {
 
@@ -39,14 +37,37 @@ public class employeesDB {
         }
     }
 
-    public Employee[] getEmployeesFromDB(){
+    public static ArrayList<Employee> getEmployees(User user){
+        ArrayList<Employee> employees = new ArrayList<>();
 
-        Employee[] employees = new Employee[10];
-        
-        for(int i = 0; i < 10; i++){
+        try {
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
 
-        }
+            PreparedStatement allEmployees = connection.prepareStatement(
+                    "SELECT * FROM employees WHERE user_id = ?"
+            );
+            allEmployees.setInt(1, user.getId());
 
-    return employees;
+            ResultSet results = allEmployees.executeQuery();
+
+            while(results.next()){
+                Employee employee = new Employee(
+                        results.getInt("id"),
+                        results.getString("fname"),
+                        results.getString("lname"),
+                        results.getString("email"),
+                        results.getString("phonenum"),
+                        results.getString("address"),
+                        results.getString("NI"),
+                        results.getBigDecimal("wage").floatValue(),
+                        results.getBigDecimal("hours").floatValue(),
+                        results.getDate("date")
+                );
+
+                employees.add(employee);}
+
+        } catch (SQLException e) { throw new RuntimeException(e); }
+
+        return employees;
     }
 }

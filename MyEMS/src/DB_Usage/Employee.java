@@ -1,7 +1,10 @@
 package DB_Usage;
 
+import java.util.Date;
+
 public class Employee {
 
+    private int employeeId;
     private String fname;
     private String lname;
     private String email;
@@ -10,9 +13,10 @@ public class Employee {
     private String NInumber;
     private float wage;
     private float hoursWorked;
+    private Date joinDate;
 
-    public Employee(String fname, String lname, String email, String phoneNum, String address, String NInumber, float wage,
-                    float hoursWorked) {
+    public Employee(int employeeId, String fname, String lname, String email, String phoneNum, String address, String NInumber, float wage,
+                    float hoursWorked, Date joinDate) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
@@ -21,7 +25,8 @@ public class Employee {
         this.NInumber = NInumber;
         this.wage = wage;
         this.hoursWorked = hoursWorked;
-
+        this.employeeId = employeeId;
+        this.joinDate = joinDate;
     }
     public Employee(){}
 
