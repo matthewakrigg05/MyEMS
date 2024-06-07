@@ -1,5 +1,5 @@
 package UIs;
-import DB_Usage.emsDB;
+import DB_Usage.userInit;
 import DB_Usage.validRegistration;
 import javax.swing.*;
 import java.awt.*;
@@ -134,7 +134,7 @@ public class registerUI extends mainFrame implements ActionListener {
             if (validRegistration.validateRegistrationInput(email, password, rePassword)) {
 
                 // THEN, checks if email exists already in DB, if not, adds to DB
-                if (emsDB.register(email, password)) {
+                if (userInit.register(email, password)) {
                     registerUI.this.dispose();
 
                     logInUI logInUI;

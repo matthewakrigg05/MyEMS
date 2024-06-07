@@ -1,6 +1,6 @@
 package UIs;
 import DB_Usage.User;
-import DB_Usage.emsDB;
+import DB_Usage.userInit;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -103,11 +103,12 @@ public class logInUI extends mainFrame implements ActionListener {
     private JButton getLogInButton(JTextField emailField, JPasswordField passwordField) {
         JButton logInButton = new JButton("Log In");
         logInButton.setPreferredSize(new Dimension(70, 30));
+
         logInButton.addActionListener(e -> {
 
             String email = emailField.getText();
             String password = String.valueOf(passwordField.getPassword());
-            User user = emsDB.validateLogin(email, password);
+            User user = userInit.validateLogin(email, password);
 
             if (user != null) {
                 logInUI.this.dispose();

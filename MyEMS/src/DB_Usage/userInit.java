@@ -1,14 +1,11 @@
 package DB_Usage;
-import java.math.BigDecimal;
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 /*
 The goal of this class is to connect to the database and manage how user data is passed on to the database; this is as
 well as making sure that a user email does not already exist in the database so that it cannot be used again.
  */
 
-public class emsDB {
+public class userInit {
 
     // Db password is maintained in a dot env file to prevent the password to the db being published to GH
     private static final String db_url = System.getenv("DB_URL");
@@ -81,32 +78,5 @@ public class emsDB {
             e.printStackTrace();
         }
         return true;
-    }
-
-    public static void addEmployee(int user_id, String fname, String lname,
-                                   String email, String phoneNum, String address, String NI,
-                                   float wage){
-        try{
-            Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
-
-            PreparedStatement insertEmployee = connection.prepareStatement(
-                    "INSERT employees(fname, lname, email, phoneNum, address, NI, wage, hours, user_id, date) "
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())"
-            );
-
-            insertEmployee.setString(1, fname);
-            insertEmployee.setString(2, lname);
-            insertEmployee.setString(3, email);
-            insertEmployee.setString(4, phoneNum);
-            insertEmployee.setString(5, address);
-            insertEmployee.setString(6, NI);
-            insertEmployee.setBigDecimal(7, BigDecimal.valueOf(wage));
-            insertEmployee.setBigDecimal(8, BigDecimal.valueOf(0));
-            insertEmployee.setInt(9, user_id);
-            insertEmployee.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
