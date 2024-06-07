@@ -103,6 +103,7 @@ public class logInUI extends mainFrame implements ActionListener {
     private JButton getLogInButton(JTextField emailField, JPasswordField passwordField) {
         JButton logInButton = new JButton("Log In");
         logInButton.setPreferredSize(new Dimension(70, 30));
+
         logInButton.addActionListener(e -> {
 
             String email = emailField.getText();

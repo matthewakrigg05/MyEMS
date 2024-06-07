@@ -16,18 +16,6 @@ public class employeesPanel extends JDialog {
         JScrollPane scrollPane = new JScrollPane(employeesPanel);
         employeesPanel.setAutoscrolls(true);
 
-        ArrayList<Employee> employees = getEmployees(user);
-        int numOfEmployees = employees.size();
-
-        for(int i = 0; i < numOfEmployees; i++){
-            String fname = employees.get(i).getFname();
-
-
-
-            JTextArea employeeInfo = new JTextArea(fname);
-            employeesPanel.add(employeeInfo);
-        }
-
         JLabel employeeTitle = new JLabel("Employees");
 
         JLabel addEmployeeLabel = new JLabel("Add Employee");
@@ -37,6 +25,20 @@ public class employeesPanel extends JDialog {
         employeesPanel.add(employeeTitle);
         employeesPanel.add(addEmployeeLabel);
         employeesPanel.add(addEmployeeButton);
+
+        ArrayList<Employee> employees = getEmployees(user);
+        int numOfEmployees = employees.size();
+
+        for(int i = 0; i < numOfEmployees; i++){
+            String fname = employees.get(i).getFname();
+
+
+
+            JTextArea employeeInfo = new JTextArea(fname + "\n");
+            employeeInfo.setEditable(false);
+            employeeInfo.setOpaque(false);
+            employeesPanel.add(employeeInfo);
+        }
 
         addEmployeeButton.addActionListener(e -> {
             JDialog addEmployeeWindow = new addEmployeeWindow(user, myEmsUi);

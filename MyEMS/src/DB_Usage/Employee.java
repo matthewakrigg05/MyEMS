@@ -66,4 +66,12 @@ public class Employee {
     public float getHoursWorked() {
         return hoursWorked;
     }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public Date getJoinDate() {
+        return joinDate;
+    }
 }
