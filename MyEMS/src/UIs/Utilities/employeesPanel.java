@@ -6,6 +6,7 @@ import UIs.myEmsUI;
 import javax.swing.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import static DB_Usage.employeesDB.getEmployees;
 
@@ -30,11 +31,19 @@ public class employeesPanel extends JDialog {
         int numOfEmployees = employees.size();
 
         for(int i = 0; i < numOfEmployees; i++){
+            int employeeId = employees.get(i).getEmployeeId();
             String fname = employees.get(i).getFname();
+            String lname = employees.get(i).getLname();
+            String email = employees.get(i).getEmail();
+            String phoneNum = employees.get(i).getPhoneNum();
+            String address = employees.get(i).getAddress();
+            String NInum = employees.get(i).getNInumber();
+            float wage = employees.get(i).getWage();
+            float hours = employees.get(i).getHoursWorked();
+            Date dateJoined = employees.get(i).getJoinDate();
 
-
-
-            JTextArea employeeInfo = new JTextArea(fname + "\n");
+            JTextArea employeeInfo = new JTextArea(employeeId + " " + fname + " " + lname + " " + email + " " +
+                    phoneNum + " " + address + " " + NInum + " " + wage + " " + hours + " " + dateJoined);
             employeeInfo.setEditable(false);
             employeeInfo.setOpaque(false);
             employeesPanel.add(employeeInfo);
