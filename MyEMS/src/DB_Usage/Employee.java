@@ -30,9 +30,9 @@ public class Employee {
     }
     public Employee(){}
 
-    public void employeeDetails(){
-        System.out.println(this.fname + " " + this.lname + " " + this.wage + " " + this.email + " " + this.phoneNum
-        + " " + this.hoursWorked);
+    public String getEmployeeData(){
+        return employeeId + " " + fname + " " + lname + " " + email + " " +
+                phoneNum + " " + address + " " + NInumber + " " + wage + " " + hoursWorked + " " + joinDate;
     }
 
     public String getFname() {

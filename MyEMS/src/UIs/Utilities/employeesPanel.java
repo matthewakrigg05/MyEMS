@@ -2,11 +2,9 @@ package UIs.Utilities;
 import DB_Usage.Employee;
 import DB_Usage.User;
 import UIs.myEmsUI;
-
 import javax.swing.*;
-
 import java.util.ArrayList;
-import java.util.Date;
+
 
 import static DB_Usage.employeesDB.getEmployees;
 
@@ -21,29 +19,18 @@ public class employeesPanel extends JDialog {
 
         JLabel addEmployeeLabel = new JLabel("Add Employee");
         JButton addEmployeeButton = new JButton("+");
-        JButton editEmployeesButton = new JButton("Edit");
 
         employeesPanel.add(employeeTitle);
         employeesPanel.add(addEmployeeLabel);
         employeesPanel.add(addEmployeeButton);
 
         ArrayList<Employee> employees = getEmployees(user);
-        int numOfEmployees = employees.size();
+        // int numOfEmployees = employees.size(); - may be useful for UI
 
-        for(int i = 0; i < numOfEmployees; i++){
-            int employeeId = employees.get(i).getEmployeeId();
-            String fname = employees.get(i).getFname();
-            String lname = employees.get(i).getLname();
-            String email = employees.get(i).getEmail();
-            String phoneNum = employees.get(i).getPhoneNum();
-            String address = employees.get(i).getAddress();
-            String NInum = employees.get(i).getNInumber();
-            float wage = employees.get(i).getWage();
-            float hours = employees.get(i).getHoursWorked();
-            Date dateJoined = employees.get(i).getJoinDate();
+        for (Employee employee : employees) {
+            String employeeData = employee.getEmployeeData();
 
-            JTextArea employeeInfo = new JTextArea(employeeId + " " + fname + " " + lname + " " + email + " " +
-                    phoneNum + " " + address + " " + NInum + " " + wage + " " + hours + " " + dateJoined);
+            JTextArea employeeInfo = new JTextArea(employeeData);
             employeeInfo.setEditable(false);
             employeeInfo.setOpaque(false);
             employeesPanel.add(employeeInfo);
