@@ -3,15 +3,15 @@ import DB_Usage.Employee;
 import DB_Usage.User;
 import UIs.myEmsUI;
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
-
-
-import static DB_Usage.employeesDB.getEmployees;
+import DB_Usage.employeesDB;
 
 public class employeesPanel extends JDialog {
 
     public static JScrollPane getEmployeePanel(User user, myEmsUI myEmsUi){
         final JPanel employeesPanel = new JPanel();
+        employeesPanel.setLayout(new BoxLayout(employeesPanel, BoxLayout.Y_AXIS));
         JScrollPane scrollPane = new JScrollPane(employeesPanel);
         employeesPanel.setAutoscrolls(true);
 
@@ -24,13 +24,14 @@ public class employeesPanel extends JDialog {
         employeesPanel.add(addEmployeeLabel);
         employeesPanel.add(addEmployeeButton);
 
-        ArrayList<Employee> employees = getEmployees(user);
+        ArrayList<Employee> employees = employeesDB.getEmployees(user);
         // int numOfEmployees = employees.size(); - may be useful for UI
 
         for (Employee employee : employees) {
             String employeeData = employee.getEmployeeData();
 
             JTextArea employeeInfo = new JTextArea(employeeData);
+
             employeeInfo.setEditable(false);
             employeeInfo.setOpaque(false);
             employeesPanel.add(employeeInfo);
@@ -38,7 +39,7 @@ public class employeesPanel extends JDialog {
 
         addEmployeeButton.addActionListener(e -> {
             JDialog addEmployeeWindow = new addEmployeeWindow(user, myEmsUi);
-            addEmployeeWindow.setTitle("Add a new DB_Usage.employee");
+            addEmployeeWindow.setTitle("Add a new employee");
             addEmployeeWindow.setLocationRelativeTo(employeesPanel);
             addEmployeeWindow.setVisible(true);
         });
