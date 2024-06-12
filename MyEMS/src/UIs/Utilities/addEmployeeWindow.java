@@ -1,14 +1,11 @@
 package UIs.Utilities;
 import DB_Usage.User;
-import static DB_Usage.employeesDB.addEmployee;
+import DB_Usage.employeesDB;
 import UIs.myEmsUI;
 import javax.swing.*;
 import java.awt.*;
 
 public class addEmployeeWindow extends JDialog {
-
-    private User user;
-    private static myEmsUI myEmsUI;
 
     public addEmployeeWindow(User user, myEmsUI myEmsUI){
 
@@ -140,7 +137,7 @@ public class addEmployeeWindow extends JDialog {
 
         addEmployeeButton.addActionListener(e -> {
             if(validateInput(firstName, lastName, email, phoneNum, address, NInum, wage, myEmsUI)){
-                addEmployee(user.getId(), firstName.getText(), lastName.getText(), email.getText(), phoneNum.getText(),
+                employeesDB.addEmployee(user.getId(), firstName.getText(), lastName.getText(), email.getText(), phoneNum.getText(),
                         address.getText(), NInum.getText(), Float.parseFloat(wage.getText()));
 
                 dispose();
@@ -148,7 +145,6 @@ public class addEmployeeWindow extends JDialog {
                 JOptionPane.showMessageDialog(myEmsUI, "Employee added successfully!");
             }
         });
-
     }
 
     public static boolean validateInput(JTextField fname, JTextField lname, JTextField email, JTextField phoneNum,

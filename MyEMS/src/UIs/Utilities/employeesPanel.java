@@ -3,7 +3,6 @@ import DB_Usage.Employee;
 import DB_Usage.User;
 import UIs.myEmsUI;
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import DB_Usage.employeesDB;
 
@@ -25,7 +24,6 @@ public class employeesPanel extends JDialog {
         employeesPanel.add(addEmployeeButton);
 
         ArrayList<Employee> employees = employeesDB.getEmployees(user);
-        // int numOfEmployees = employees.size(); - may be useful for UI
 
         for (Employee employee : employees) {
             String employeeData = employee.getEmployeeData();

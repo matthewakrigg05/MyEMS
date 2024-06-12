@@ -1,5 +1,4 @@
 package DB_Usage;
-
 import java.util.Date;
 
 public class Employee {
@@ -15,8 +14,8 @@ public class Employee {
     private float hoursWorked;
     private Date joinDate;
 
-    public Employee(int employeeId, String fname, String lname, String email, String phoneNum, String address, String NInumber, float wage,
-                    float hoursWorked, Date joinDate) {
+    public Employee(int employeeId, String fname, String lname, String email, String phoneNum, String address,
+                    String NInumber, float wage, float hoursWorked, Date joinDate) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;

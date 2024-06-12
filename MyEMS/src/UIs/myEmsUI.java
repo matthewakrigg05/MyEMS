@@ -23,7 +23,7 @@ public class myEmsUI extends mainFrame implements ActionListener {
 
     @Override
     protected void addUIcomponents() {
-        // Components associated to the side-bar:
+        // Components associated to the sidebar:
         final JToolBar sideBar = new JToolBar(JToolBar.VERTICAL);
         JLabel placeholder = new JLabel("MyEMS");
         JButton homeButton = new JButton("Home");
