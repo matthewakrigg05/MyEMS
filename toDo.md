@@ -5,17 +5,21 @@
  - [X] Work on the front screen for the app
  - [X] Add log in page
  - [X] Change the fonts and sized of a text on login and registration
- - [ ] Complete Employee class (TBC)
+ - [X] Complete Employee class (TBC)
  - [X] Build GUI file
  - [X] Complete main class
  - [X] Rethink current design—consider more how things will be calculated and stored
  - [ ] Finish building the add employees page
+ - [ ] Allow removal of employees
+ - [ ] Allow users to change their information
+ - [ ] Maybe 2FA / email confirmation
+ - [ ] Set up welcome email
  - [X] Add email validator
- - [ ] Draw up how i want the app to function fully
+ - [ ] Draw up how I want the app to function fully
  - [ ] Design dashboard
  - [ ] add calendars
  - [ ] add a rota
- - [ ] allow ability to log hours of staff
+ - [ ] allow the ability to log hours of staff
  - [ ] view staff information
  - [ ] show list of staff - alphabetical
  - [ ] settings - log out option
