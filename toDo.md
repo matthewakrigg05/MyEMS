@@ -22,4 +22,4 @@
  - [ ] allow the ability to log hours of staff
  - [ ] view staff information
  - [ ] show list of staff - alphabetical
- - [ ] settings - log out option
+ - [X] settings - log out option
