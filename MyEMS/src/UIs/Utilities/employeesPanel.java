@@ -2,18 +2,18 @@ package UIs.Utilities;
 import DB_Usage.Employee;
 import DB_Usage.User;
 import UIs.myEmsUI;
-
 import javax.swing.*;
-
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.Date;
-
-import static DB_Usage.employeesDB.getEmployees;
+import DB_Usage.employeesDB;
 
 public class employeesPanel extends JDialog {
 
     public static JScrollPane getEmployeePanel(User user, myEmsUI myEmsUi){
         final JPanel employeesPanel = new JPanel();
+        GridBagLayout employeesLayout = new GridBagLayout();
+        employeesPanel.setLayout(employeesLayout);
+
         JScrollPane scrollPane = new JScrollPane(employeesPanel);
         employeesPanel.setAutoscrolls(true);
 
@@ -21,37 +21,37 @@ public class employeesPanel extends JDialog {
 
         JLabel addEmployeeLabel = new JLabel("Add Employee");
         JButton addEmployeeButton = new JButton("+");
-        JButton editEmployeesButton = new JButton("Edit");
+
+        ArrayList<Employee> employees = employeesDB.getEmployees(user);
+        String[][] employeeInfo = new String[employees.size()][10];
+        String[] columnNames = {"ID", "First Name", "Last Name", "Email", "Phone Number", "Address", "NI", "Wage", "Hours", "Joined"};
+
+        for (Employee employee : employees) {
+            String employeeData = employee.getEmployeeData();
+
+            employeeInfo[(employee.getEmployeeId() - 1)][0] = String.valueOf(employee.getEmployeeId());
+            employeeInfo[(employee.getEmployeeId() - 1)][1] = employee.getFname();
+            employeeInfo[(employee.getEmployeeId() - 1)][2] = employee.getLname();
+            employeeInfo[(employee.getEmployeeId() - 1)][3] = employee.getEmail();
+            employeeInfo[(employee.getEmployeeId() - 1)][4] = employee.getPhoneNum();
+            employeeInfo[(employee.getEmployeeId() - 1)][5] = employee.getAddress();
+            employeeInfo[(employee.getEmployeeId() - 1)][6] = employee.getNInumber();
+            employeeInfo[(employee.getEmployeeId() - 1)][7] = String.valueOf(employee.getWage());
+            employeeInfo[(employee.getEmployeeId() - 1)][8] = String.valueOf(employee.getHoursWorked());
+            employeeInfo[(employee.getEmployeeId() - 1)][9] = String.valueOf(employee.getJoinDate());
+        }
+
+        JTable table = new JTable(employeeInfo, columnNames);
+        table.setEnabled(false);
 
         employeesPanel.add(employeeTitle);
         employeesPanel.add(addEmployeeLabel);
         employeesPanel.add(addEmployeeButton);
-
-        ArrayList<Employee> employees = getEmployees(user);
-        int numOfEmployees = employees.size();
-
-        for(int i = 0; i < numOfEmployees; i++){
-            int employeeId = employees.get(i).getEmployeeId();
-            String fname = employees.get(i).getFname();
-            String lname = employees.get(i).getLname();
-            String email = employees.get(i).getEmail();
-            String phoneNum = employees.get(i).getPhoneNum();
-            String address = employees.get(i).getAddress();
-            String NInum = employees.get(i).getNInumber();
-            float wage = employees.get(i).getWage();
-            float hours = employees.get(i).getHoursWorked();
-            Date dateJoined = employees.get(i).getJoinDate();
-
-            JTextArea employeeInfo = new JTextArea(employeeId + " " + fname + " " + lname + " " + email + " " +
-                    phoneNum + " " + address + " " + NInum + " " + wage + " " + hours + " " + dateJoined);
-            employeeInfo.setEditable(false);
-            employeeInfo.setOpaque(false);
-            employeesPanel.add(employeeInfo);
-        }
+        employeesPanel.add(table);
 
         addEmployeeButton.addActionListener(e -> {
             JDialog addEmployeeWindow = new addEmployeeWindow(user, myEmsUi);
-            addEmployeeWindow.setTitle("Add a new DB_Usage.employee");
+            addEmployeeWindow.setTitle("Add a new employee");
             addEmployeeWindow.setLocationRelativeTo(employeesPanel);
             addEmployeeWindow.setVisible(true);
         });
