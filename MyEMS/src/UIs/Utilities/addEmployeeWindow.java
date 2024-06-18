@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class addEmployeeWindow extends JDialog {
 
-    public addEmployeeWindow(User user, myEmsUI myEmsUI){
+    public addEmployeeWindow(User user, myEmsUI myEmsUI, JPanel employeePanel){
 
         setFocusable(true);
         setSize(1300, 750);
