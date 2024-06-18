@@ -1,5 +1,5 @@
 package DB_Usage;
-
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class employeeInfo {
@@ -25,5 +25,13 @@ public class employeeInfo {
 
     public static String[] getColumnNames(){
         return new String[]{"ID", "First Name", "Last Name", "Email", "Phone Number", "Address", "NI", "Wage", "Hours", "Joined"};
+    }
+
+    public static JTable generateEmployeeTable(User user){
+
+        JTable table = new JTable(employeeInfo.getEmployeeInfo(user), employeeInfo.getColumnNames());
+        table.setEnabled(false);
+
+        return table;
     }
 }

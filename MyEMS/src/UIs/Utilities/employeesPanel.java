@@ -5,7 +5,6 @@ import UIs.myEmsUI;
 import javax.swing.*;
 import java.awt.*;
 
-
 public class employeesPanel extends JDialog {
 
     public static JScrollPane getEmployeePanel(User user, myEmsUI myEmsUi){
@@ -21,8 +20,7 @@ public class employeesPanel extends JDialog {
         JLabel addEmployeeLabel = new JLabel("Add Employee");
         JButton addEmployeeButton = new JButton("+");
 
-        JTable table = new JTable(employeeInfo.getEmployeeInfo(user), employeeInfo.getColumnNames());
-        table.setEnabled(false);
+        JTable table = employeeInfo.generateEmployeeTable(user);
 
         employeesPanel.add(employeeTitle);
         employeesPanel.add(addEmployeeLabel);
@@ -35,9 +33,6 @@ public class employeesPanel extends JDialog {
             addEmployeeWindow.setLocationRelativeTo(employeesPanel);
             addEmployeeWindow.setVisible(true);
         });
-
-        Timer t = new Timer(300, e -> table.repaint());
-        t.start();
 
         return scrollPane;
     }
