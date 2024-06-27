@@ -71,7 +71,7 @@ public class Employee {
         return employeeId;
     }
 
-    public Date getJoinDate() {
-        return joinDate;
+    public String getJoinDate() {
+        return String.valueOf(joinDate);
     }
 }
