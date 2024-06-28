@@ -27,7 +27,7 @@ public class passwordUtils {
             SecretKeyFactory skf = SecretKeyFactory.getInstance( "PBKDF2WithHmacSHA512" );
             PBEKeySpec spec = new PBEKeySpec(passwordChars, salt, iterations, keyLength);
             SecretKey key = skf.generateSecret(spec);
-            byte[] hashedBytes = key.getEncoded( );
+            byte[] hashedBytes = key.getEncoded();
             return Hex.encodeHexString(hashedBytes);
 
         } catch ( NoSuchAlgorithmException | InvalidKeySpecException e ) {
