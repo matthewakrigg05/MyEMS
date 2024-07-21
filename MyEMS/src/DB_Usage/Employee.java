@@ -1,4 +1,5 @@
 package DB_Usage;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Employee {
@@ -70,7 +71,7 @@ public class Employee {
         return employeeId;
     }
 
-    public Date getJoinDate() {
-        return joinDate;
+    public String getJoinDate() {
+        return String.valueOf(joinDate);
     }
 }
