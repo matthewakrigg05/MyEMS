@@ -8,6 +8,8 @@ that said input is valid and meets specific requirements.
 
 public class validRegistration extends Component {
 
+    // Uses regex pattern to determine whether an email address is invalid, if so returns true, therefore
+    // returning false if the email is valid
     public static boolean invalidEmailAddress(String email) {
         String emailPatterns = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(emailPatterns);
