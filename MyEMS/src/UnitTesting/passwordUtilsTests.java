@@ -4,6 +4,4 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class passwordUtilsTests {
-
-
 }
