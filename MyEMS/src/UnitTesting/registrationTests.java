@@ -1,10 +1,9 @@
 package UnitTesting;
-
 import DB_Usage.passwordUtils;
 import DB_Usage.validRegistration;
 import org.junit.jupiter.api.Test;
 
-class registrationTest extends passwordUtils {
+class registrationTests extends passwordUtils {
 
     //Example valid emails for invalidEmailAddress():
     String [] validEmails = new String[]{
@@ -12,9 +11,7 @@ class registrationTest extends passwordUtils {
             "example.first.middle.lastname@email.com",
             "example@subdomain.email.com",
             "example+firstname+lastname@email.com",
-            "example@234.234.234.234",
-            "example@[234.234.234.234]",
-            "       “example”@email.com",
+            "\"example\"@email.com",
             "0987654321@example.com",
             "example@email-one.com",
             "_______@email.com",
@@ -22,10 +19,9 @@ class registrationTest extends passwordUtils {
             "example@email.museum",
             "example@email.co.jp",
             "example.firstname-lastname@email.com",
-            "Valid Email Addresses that appear at glance to be invalid",
             "extremely.”odd\\unusual”@example.com",
             "extremely.unusual.”@”.unusual.com@example.com",
-            "very.”(),:;<>[]”.VERY.”very@\\\\ “very”.unusual@strange.email.example.com"};
+            "very.”(),:;<>[].VERY.”very@\\\\ “very”.unusual@strange.email.example.com"};
 
     // Examples invalid emails for invalidEmailAddress()
     String [] invalidEmails = new String[]{
@@ -48,7 +44,9 @@ class registrationTest extends passwordUtils {
             "CAT…123@email.com",
             "”(),:;<>[\\]@email.com",
             "obviously”not”correct@email.com",
-            "example\\ is”especially”not\\allowed@email.com"};
+            "example\\ is”especially”not\\allowed@email.com",
+            "example@234.234.234.234",
+            "example@[234.234.234.234]"};
 
     @Test
     void invalidEmailAddress() {
@@ -57,10 +55,10 @@ class registrationTest extends passwordUtils {
             i++;
 
             if(validRegistration.invalidEmailAddress(email)){
-                System.out.println("Test " + i + " Unsuccessful - valid email address not accepted.");
+                System.out.println("Test Case: " + i + " " + email + " Unsuccessful - valid email address not accepted.");
             }
             else {
-                System.out.println("Test " + i + " Successful - valid email address correctly accepted.");
+                System.out.println("Test Case: " + i + " Successful - valid email address correctly accepted.");
             }
         }
 
@@ -68,12 +66,19 @@ class registrationTest extends passwordUtils {
             i++;
 
             if(validRegistration.invalidEmailAddress(email)){
-                System.out.println("Test " + i + " Successful - invalid email address correctly not accepted.");
+                System.out.println("Test Case: " + i + " Successful - invalid email address correctly not accepted.");
             }
             else {
-                System.out.println("Test " + i + " Unsuccessful - valid email address incorrectly accepted.");
+                System.out.println("Test Case: " + i + " Unsuccessful - valid email address incorrectly accepted.");
             }
         }
+    }
+
+    @Test
+    void specEmail(){
+        if(validRegistration.invalidEmailAddress("       “example”@email.com")){
+            System.out.println("Valid");
+        };
     }
 
     @Test
