@@ -20,8 +20,10 @@ class registrationTests extends passwordUtils {
             "example@email.co.jp",
             "example.firstname-lastname@email.com",
             "extremely.”odd\\unusual”@example.com",
-            "extremely.unusual.”@”.unusual.com@example.com",
-            "very.”(),:;<>[].VERY.”very@\\\\ “very”.unusual@strange.email.example.com"};
+            "extremely.unusual.\"@\".unusual.com@example.com",
+            "very.\"(),:;<>[]\".VERY.\"very\"@\"\\\\ very\".unusual@strange.email.example.com",
+            "example@234.234.234.234",
+            "example@[234.234.234.234]"};
 
     // Examples invalid emails for invalidEmailAddress()
     String [] invalidEmails = new String[]{
@@ -44,9 +46,7 @@ class registrationTests extends passwordUtils {
             "CAT…123@email.com",
             "”(),:;<>[\\]@email.com",
             "obviously”not”correct@email.com",
-            "example\\ is”especially”not\\allowed@email.com",
-            "example@234.234.234.234",
-            "example@[234.234.234.234]"};
+            "example\\ is”especially”not\\allowed@email.com"};
 
     @Test
     void invalidEmailAddress() {
