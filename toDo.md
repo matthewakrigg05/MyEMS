@@ -23,4 +23,4 @@
  - [ ] view staff information
  - [ ] show list of staff - alphabetical
  - [X] settings - log out option
- - [ ] **Have employee panel refresh and add employee**
+ - [ ] Have employee panel refresh and add employee
