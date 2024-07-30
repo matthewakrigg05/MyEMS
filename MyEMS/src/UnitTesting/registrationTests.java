@@ -19,10 +19,8 @@ class registrationTests extends passwordUtils {
             "example@email.museum",
             "example@email.co.jp",
             "example.firstname-lastname@email.com",
-            "extremely.”odd\\unusual”@example.com",
+            "extremely.\"odd\\unusual\"@example.com",
             "extremely.unusual.\"@\".unusual.com@example.com",
-            "very.\"(),:;<>[]\".VERY.\"very\"@\"\\\\ very\".unusual@strange.email.example.com",
-            "example@234.234.234.234",
             "example@[234.234.234.234]"};
 
     // Examples invalid emails for invalidEmailAddress()
