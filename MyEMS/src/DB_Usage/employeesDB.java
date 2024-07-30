@@ -60,8 +60,7 @@ public class employeesDB {
                         results.getString("NI"),
                         results.getBigDecimal("wage").floatValue(),
                         results.getBigDecimal("hours").floatValue(),
-                        results.getDate("date")
-                );
+                        results.getDate("date"));
 
                 employees.add(employee);}
 
@@ -80,9 +79,7 @@ public class employeesDB {
 
             ResultSet total = numOfEmployees.executeQuery();
             total.next();
-
             return total.getInt(1);
         } catch (SQLException e) {throw new RuntimeException(e);}
-
     }
 }
