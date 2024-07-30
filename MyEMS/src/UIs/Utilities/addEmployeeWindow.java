@@ -1,13 +1,15 @@
 package UIs.Utilities;
+import DB_Usage.Employee;
 import DB_Usage.User;
 import DB_Usage.employeesDB;
 import UIs.myEmsUI;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class addEmployeeWindow extends JDialog {
 
-    public addEmployeeWindow(User user, myEmsUI myEmsUI, JPanel employeePanel){
+    public addEmployeeWindow(User user, myEmsUI myEmsUI, JPanel employeePanel, DefaultTableModel tableModel){
 
         setFocusable(true);
         setSize(1300, 750);

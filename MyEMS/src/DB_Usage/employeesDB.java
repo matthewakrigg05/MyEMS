@@ -69,4 +69,20 @@ public class employeesDB {
 
         return employees;
     }
+
+    public static int getNumOfEmployees(User user){
+        try{
+            Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
+
+            PreparedStatement numOfEmployees = connection.prepareStatement(
+                    "SELECT COUNT(*) FROM employees"
+            );
+
+            ResultSet total = numOfEmployees.executeQuery();
+            total.next();
+
+            return total.getInt(1);
+        } catch (SQLException e) {throw new RuntimeException(e);}
+
+    }
 }
