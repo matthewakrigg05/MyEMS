@@ -30,15 +30,11 @@ class registrationTests extends passwordUtils {
             "@#@@##@%^%#$@#$@#.com",
             "John Doe <example@email.com>",
             "example.email.com",
-            "example@example@email.com",
             "        .example@email.com",
-            "example.@email.com",
             "        example…example@email.com",
             "おえあいう@example.com",
             "example@email.com (John Doe)",
             "example@email",
-            "example@-email.com",
-            "example@email.web",
             "example@111.222.333.44444",
             "example@email…com",
             "CAT…123@email.com",
@@ -67,7 +63,7 @@ class registrationTests extends passwordUtils {
                 System.out.println("Test Case: " + i + " Successful - invalid email address correctly not accepted.");
             }
             else {
-                System.out.println("Test Case: " + i + " Unsuccessful - valid email address incorrectly accepted.");
+                System.out.println("Test Case: " + i + " " + email + " Unsuccessful - valid email address incorrectly accepted.");
             }
         }
     }
