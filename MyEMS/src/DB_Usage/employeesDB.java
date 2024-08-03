@@ -1,4 +1,7 @@
 package DB_Usage;
+import UIs.myEmsUI;
+
+import javax.swing.*;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -70,6 +73,31 @@ public class employeesDB {
         return employees;
     }
 
+    public static boolean validateInput(JTextField fname, JTextField lname, JTextField email, JTextField phoneNum,
+                                        JTextField address, JTextField NInum, JTextField wage, myEmsUI myEmsUI){
+
+        String firstName = fname.getText();
+        String lastName = lname.getText();
+        String emailAdd = email.getText();
+        String phoneNumber = phoneNum.getText();
+        String homeAddress = address.getText();
+        String NiNum = NInum.getText();
+        String wages = wage.getText();
+
+        if (firstName.isEmpty() || lastName.isEmpty() || wage.getText().isEmpty() || NiNum.isEmpty() ||
+                homeAddress.isEmpty() || wages.isEmpty() || (emailAdd.isEmpty() && phoneNumber.isEmpty())){
+            JOptionPane.showMessageDialog(myEmsUI, "Please fill all necessary fields in appropriate formats.");
+            return false;
+        }
+
+        if (!wages.matches("[-+]?[0-9]*\\.?[0-9]+")){
+            JOptionPane.showMessageDialog(myEmsUI, "Please ensure that the wage is numerical.");
+            return false;
+        }
+
+        return true;
+    }
+
     public static int getNumOfEmployees(User user){
         try{
             Connection connection = DriverManager.getConnection(db_url, db_username, db_password);
@@ -83,6 +111,5 @@ public class employeesDB {
 
             return total.getInt(1);
         } catch (SQLException e) {throw new RuntimeException(e);}
-
     }
 }

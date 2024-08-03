@@ -8,7 +8,7 @@ public class sideBar {
 
     public static JToolBar getSideBar(User user, myEmsUI myEmsUI){
         JToolBar sideBar = new JToolBar(JToolBar.VERTICAL);
-        JLabel placeholder = new JLabel("MyEMS");
+        JLabel sideBarTitle = new JLabel("MyEMS");
         JButton homeButton = new JButton("Home");
         JButton employeesButton = new JButton("Employees");
         JButton rotasButton = new JButton("Rotas");
@@ -18,7 +18,7 @@ public class sideBar {
         sideBar.setBackground(Color.blue);
         sideBar.setPreferredSize(new Dimension(240, 500));
         sideBar.setFloatable(false);
-        sideBar.add(placeholder);
+        sideBar.add(sideBarTitle);
         sideBar.add(homeButton);
         sideBar.add(employeesButton);
         sideBar.add(rotasButton);
@@ -26,7 +26,7 @@ public class sideBar {
         sideBar.add(settingsButton);
 
         homeButton.addActionListener(e -> {
-            myEmsUI.removeAll();
+            myEmsUI.getContentPane().removeAll();
             myEmsUI.getContentPane().add(sideBar, BorderLayout.WEST);
             myEmsUI.getContentPane().add(homePanel.getHomePanel(), BorderLayout.CENTER);
             myEmsUI.revalidate();
