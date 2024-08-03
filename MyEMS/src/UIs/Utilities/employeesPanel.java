@@ -166,9 +166,8 @@ public class employeesPanel extends JDialog {
                 employeesDB.addEmployee(user.getId(), firstName.getText(), lastName.getText(), email.getText(), phoneNum.getText(),
                         address.getText(), NInum.getText(), Float.parseFloat(wage.getText()));
 
-                tableModel.fireTableDataChanged();
-                table.revalidate();
-                table.repaint();
+                DefaultTableModel newTableModel = new DefaultTableModel(employeeInfo.getEmployeeInfo(user), employeeInfo.getColumnNames());
+                table.setModel(newTableModel);
                 addEmployeeWindow.dispose();
 
                 JOptionPane.showMessageDialog(myEmsUi, "Employee added successfully!");
