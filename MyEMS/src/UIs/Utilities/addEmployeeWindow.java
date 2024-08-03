@@ -1,5 +1,4 @@
 package UIs.Utilities;
-import DB_Usage.Employee;
 import DB_Usage.User;
 import DB_Usage.employeesDB;
 import UIs.myEmsUI;
