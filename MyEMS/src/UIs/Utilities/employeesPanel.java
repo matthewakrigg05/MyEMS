@@ -6,8 +6,7 @@ import UIs.myEmsUI;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-
-import static UIs.Utilities.addEmployeeWindow.validateInput;
+import static DB_Usage.employeesDB.validateInput;
 
 public class employeesPanel extends JDialog {
 
