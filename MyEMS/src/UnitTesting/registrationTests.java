@@ -68,8 +68,7 @@ class registrationTests extends passwordUtils {
         }
     }
 
-    String [] validPasswords = new String[]{
-
+    String [] validPasswordExamples = new String[]{
     };
 
     @Test
