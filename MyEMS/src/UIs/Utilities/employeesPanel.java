@@ -4,6 +4,7 @@ import DB_Usage.employeeInfo;
 import DB_Usage.employeesDB;
 import UIs.myEmsUI;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,10 @@ public class employeesPanel extends JDialog {
         DefaultTableModel tableModel = new DefaultTableModel(employeeInfo.getEmployeeInfo(user), employeeInfo.getColumnNames());
         JTable table = new JTable(tableModel);
         table.setEnabled(false);
+        table.setOpaque(false);
+        ((DefaultTableCellRenderer)table.getDefaultRenderer(Object.class)).setOpaque(false);
+
+        table.setShowVerticalLines(false);
 
         employeesPanel.add(employeeTitle);
         employeesPanel.add(addEmployeeLabel);
