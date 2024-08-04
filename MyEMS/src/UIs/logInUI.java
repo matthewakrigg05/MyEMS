@@ -24,7 +24,6 @@ public class logInUI extends mainFrame implements ActionListener {
         GridBagConstraints gbc_emailLabel = new GridBagConstraints();
         gbc_emailLabel.gridx = 0;
         gbc_emailLabel.gridy = 0;
-
         JLabel emailLabel = new JLabel("Email: ");
         emailLabel.setSize(super.getWidth() - 30, 24);
         emailLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -33,7 +32,6 @@ public class logInUI extends mainFrame implements ActionListener {
         gbc_emailField.gridx = 0;
         gbc_emailField.gridy = 1;
         gbc_emailField.insets = new Insets(10, 0, 25, 0);
-
         JTextField emailField = new JTextField();
         emailField.setPreferredSize(new Dimension(getWidth() - 540, 40));
         emailField.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -41,7 +39,6 @@ public class logInUI extends mainFrame implements ActionListener {
         GridBagConstraints gbc_passwordLabel = new GridBagConstraints();
         gbc_passwordLabel.gridx = 0;
         gbc_passwordLabel.gridy = 2;
-
         JLabel passwordLabel = new JLabel("Password:");
         passwordLabel.setSize(getWidth() - 50, 24);
         passwordLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
@@ -50,7 +47,6 @@ public class logInUI extends mainFrame implements ActionListener {
         gbc_passwordField.gridx = 0;
         gbc_passwordField.gridy = 3;
         gbc_passwordField.insets = new Insets(10, 0, 0, 0);
-
         JPasswordField passwordField = new JPasswordField();
         passwordField.setPreferredSize(new Dimension(getWidth() - 540, 40));
         passwordField.setFont(new Font("Dialog", Font.PLAIN, 28));
@@ -58,14 +54,18 @@ public class logInUI extends mainFrame implements ActionListener {
         GridBagConstraints gbc_logInButton = new GridBagConstraints();
         gbc_logInButton.gridx = 0;
         gbc_logInButton.gridy = 4;
-        gbc_logInButton.insets = new Insets(90, 0, 15, 0);
-
+        gbc_logInButton.insets = new Insets(75, 0, 15, 0);
         final JButton logInButton = getLogInButton(emailField, passwordField);
+
+        GridBagConstraints gbc_forgotPassword = new GridBagConstraints();
+        gbc_forgotPassword.gridx = 0;
+        gbc_forgotPassword.gridy = 5;
+        gbc_forgotPassword.insets = new Insets(20 , 0, 10, 0);
+        final JButton forgotPasswordButton = new JButton("Forgot Password?");
 
         GridBagConstraints gbc_registerButton = new GridBagConstraints();
         gbc_registerButton.gridx = 0;
-        gbc_registerButton.gridy = 5;
-
+        gbc_registerButton.gridy = 6;
         final JLabel registerLabel = getRegisterLabel();
 
         logInPanel.add(emailLabel, gbc_emailLabel);
@@ -73,6 +73,7 @@ public class logInUI extends mainFrame implements ActionListener {
         logInPanel.add(passwordLabel, gbc_passwordLabel);
         logInPanel.add(passwordField, gbc_passwordField);
         logInPanel.add(logInButton, gbc_logInButton);
+        logInPanel.add(forgotPasswordButton, gbc_forgotPassword);
         logInPanel.add(registerLabel, gbc_registerButton);
 
         add(logInPanel);
@@ -121,6 +122,7 @@ public class logInUI extends mainFrame implements ActionListener {
                 }
                 myEMS.setVisible(true);
             } else {
+                passwordField.setText("");
                 JOptionPane.showMessageDialog(logInUI.this, "Login Failed");
             }
         });
