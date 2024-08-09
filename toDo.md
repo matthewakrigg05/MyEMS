@@ -1,26 +1,13 @@
  # To Do List
  
- - [X] Build a file that can test the functions of the DB_Usage.Employee class 
- - [X] Continue to add functions to the DB_Usage.Employee class 
- - [X] Work on the front screen for the app
- - [X] Add log in page
- - [X] Change the fonts and sized of a text on login and registration
- - [X] Complete Employee class (TBC)
- - [X] Build GUI file
- - [X] Complete main class
- - [X] Rethink current design—consider more how things will be calculated and stored
  - [ ] Finish building the add employees page
  - [ ] Allow removal of employees
  - [ ] Allow users to change their information
  - [ ] Maybe 2FA / email confirmation
  - [ ] Set up welcome email
- - [X] Add email validator
  - [ ] Draw up how I want the app to function fully
  - [ ] Design dashboard
  - [ ] add calendars
  - [ ] add a rota
  - [ ] allow the ability to log hours of staff
- - [ ] view staff information
- - [ ] show list of staff - alphabetical
- - [X] settings - log out option
- - [ ] Have employee panel refresh and add employee
+ - [ ] show list of staff - alphabetical, or options for how to order staff
