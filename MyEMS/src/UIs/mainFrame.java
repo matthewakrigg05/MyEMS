@@ -8,9 +8,6 @@ public abstract class mainFrame extends JFrame implements ActionListener {
 
     protected User user;
 
-    // Defining the frame itself
-    private final JFrame mainFrame = new JFrame("EMS");
-
     //Methods for building and maintaining the frame
     public mainFrame(String title) {init(title);}
 

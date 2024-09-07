@@ -114,13 +114,12 @@ public class logInUI extends mainFrame implements ActionListener {
             if (user != null) {
                 logInUI.this.dispose();
 
-                myEmsUI myEMS;
                 try {
-                     myEMS = new myEmsUI(user);
+                    new myEmsUI(user).setVisible(true);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                myEMS.setVisible(true);
+                
             } else {
                 passwordField.setText("");
                 JOptionPane.showMessageDialog(logInUI.this, "Login Failed");
