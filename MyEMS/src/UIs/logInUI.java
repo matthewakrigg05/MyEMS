@@ -9,12 +9,9 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 // File responsible for displaying login UI
-
 public class logInUI extends mainFrame implements ActionListener {
 
-    public logInUI() throws IOException {
-        super("My EMS | Log In");
-    }
+    public logInUI() throws IOException {super("My EMS | Log In");}
 
     @Override
     protected void addUIcomponents() {
@@ -75,7 +72,6 @@ public class logInUI extends mainFrame implements ActionListener {
         logInPanel.add(logInButton, gbc_logInButton);
         logInPanel.add(forgotPasswordButton, gbc_forgotPassword);
         logInPanel.add(registerLabel, gbc_registerButton);
-
         add(logInPanel);
     }
 
@@ -114,13 +110,12 @@ public class logInUI extends mainFrame implements ActionListener {
             if (user != null) {
                 logInUI.this.dispose();
 
-                myEmsUI myEMS;
                 try {
-                     myEMS = new myEmsUI(user);
+                    new myEmsUI(user).setVisible(true);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-                myEMS.setVisible(true);
+                
             } else {
                 passwordField.setText("");
                 JOptionPane.showMessageDialog(logInUI.this, "Login Failed");

@@ -32,7 +32,6 @@ public class employeesPanel extends JDialog {
         table.setEnabled(false);
         table.setOpaque(false);
         ((DefaultTableCellRenderer)table.getDefaultRenderer(Object.class)).setOpaque(false);
-
         table.setShowVerticalLines(false);
 
         employeesPanel.add(employeeTitle);
