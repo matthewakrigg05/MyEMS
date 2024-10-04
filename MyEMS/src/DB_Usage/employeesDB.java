@@ -63,8 +63,7 @@ public class employeesDB {
                         results.getString("NI"),
                         results.getBigDecimal("wage").floatValue(),
                         results.getBigDecimal("hours").floatValue(),
-                        results.getDate("date")
-                );
+                        results.getDate("date"));
 
                 employees.add(employee);}
 

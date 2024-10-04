@@ -68,12 +68,8 @@ class registrationTests extends passwordUtils {
         }
     }
 
-    @Test
-    void specEmail(){
-        if(validRegistration.invalidEmailAddress("       “example”@email.com")){
-            System.out.println("Valid");
-        };
-    }
+    String [] validPasswordExamples = new String[]{
+    };
 
     @Test
     void invalidPassword() {
